@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HeroCard · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2" style="align-items:start">
+  <div><p class="ds-cap">Desktop · 4 colunas</p><div style="max-width:380px"><section class="up-hero" aria-labelledby="hero-l">
+  <div class="up-hero__art" aria-hidden="true"><svg viewBox="0 0 320 260" preserveAspectRatio="xMaxYMid slice">
+  <polygon class="s1" points="150,300 150,150 210,90 330,90 330,300"/>
+  <polygon class="s2" points="239.8,20 300,20 300,80.2 280.4,80.2 280.4,53.6 248.2,85.8 234.2,71.8 266.4,39.6 239.8,39.6"/>
+</svg></div>
+  <div class="up-hero__top"><span class="up-hero__label" id="hero-l">Sobra após dívidas</span><span class="up-badge up-badge--warning"><span class="up-icon" data-icon="triangle-alert"></span>Amarelo</span></div>
+  <div>
+    <p class="up-hero__value">R$ 380<span class="up-hero__unit">por mês</span></p>
+    <p class="up-hero__meta">Outubro de 2026 · 0,8% do faturamento</p>
+  </div>
+  <div class="up-hero__actions"><a class="up-btn up-btn--white" href="#">Ver Raio-X<span class="up-icon" data-icon="arrow-up-right"></span></a><a class="up-btn up-btn--dark" href="#">Novo mês<span class="up-icon" data-icon="plus"></span></a></div>
+</section></div></div>
+  <div><p class="ds-cap">Empilhado · coluna estreita, com a evolução</p><div style="max-width:300px"><section class="up-hero up-hero--stack" aria-labelledby="h2-l">
+  <div class="up-hero__art" aria-hidden="true"><svg viewBox="0 0 320 260" preserveAspectRatio="xMaxYMid slice">
+  <polygon class="s1" points="150,300 150,150 210,90 330,90 330,300"/>
+  <polygon class="s2" points="239.8,20 300,20 300,80.2 280.4,80.2 280.4,53.6 248.2,85.8 234.2,71.8 266.4,39.6 239.8,39.6"/>
+</svg></div>
+  <div class="up-hero__top"><span class="up-hero__label" id="h2-l">Sobra após dívidas</span></div>
+  <div>
+    <p class="up-hero__value">R$ 380</p>
+    <p class="up-hero__meta">por mês · outubro de 2026</p>
+    <p style="margin-top:12px"><span class="up-badge up-badge--warning"><span class="up-icon" data-icon="triangle-alert"></span>Amarelo · 0,8% do faturamento</span></p>
+  </div>
+  <div aria-label="Sobra após dívidas de maio a outubro" role="img"><div class="up-hero__spark" style="--zero:16.6px"><span><i class="neg" style="top:16.6px;height:51.2px"></i></span><span><i class="neg" style="top:16.6px;height:25.5px"></i></span><span><i class="neg" style="top:16.6px;height:8.6px"></i></span><span><i style="top:10.0px;height:6.6px"></i></span><span><i class="neg" style="top:16.6px;height:4.2px"></i></span><span><i style="top:6.1px;height:10.5px"></i></span></div><div class="up-hero__sparkx" aria-hidden="true"><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Set</span><span>Out</span></div></div>
+  <div class="up-hero__actions"><a class="up-btn up-btn--white" href="#">Ver Raio-X<span class="up-icon" data-icon="arrow-up-right"></span></a><a class="up-btn up-btn--dark" href="#">Novo mês<span class="up-icon" data-icon="plus"></span></a></div>
+</section></div></div>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

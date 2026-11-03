@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Select · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <div class="up-field">
+    <label class="up-label" for="sl-tipo">Tipo de negócio</label>
+    <div class="up-control up-control--lg"><select class="up-select" id="sl-tipo"><option value="" disabled>Selecione</option><option selected>Serviço</option><option>Comércio</option><option>Autônomo</option><option>Profissional liberal</option><option>Outro</option></select><span class="up-control__chevron"><span class="up-icon" data-icon="chevron-down"></span></span></div>
+  </div>
+  <div class="up-field">
+    <label class="up-label" for="sl-esc">A dívida é da empresa ou pessoal?</label>
+    <div class="up-control up-control--lg is-focus"><select class="up-select" id="sl-esc"><option>Da empresa</option><option>Pessoal</option></select><span class="up-control__chevron"><span class="up-icon" data-icon="chevron-down"></span></span></div>
+  </div>
+  <div class="up-field">
+    <label class="up-label" for="sl-cat">Categoria</label>
+    <div class="up-control up-control--md is-invalid"><select class="up-select" id="sl-cat" aria-invalid="true" aria-describedby="sl-cat-h"><option selected>Selecione</option><option>Vendas</option><option>Impostos</option></select><span class="up-control__chevron"><span class="up-icon" data-icon="chevron-down"></span></span></div>
+    <p class="up-hint up-hint--error" id="sl-cat-h"><span class="up-icon" data-icon="octagon-alert"></span>Escolha uma categoria.</p>
+  </div>
+  <div class="up-field">
+    <label class="up-label" for="sl-dis">Tipo de negócio</label>
+    <div class="up-control up-control--md is-disabled"><select class="up-select" id="sl-dis" disabled><option>Serviço</option></select><span class="up-control__chevron"><span class="up-icon" data-icon="chevron-down"></span></span></div>
+  </div>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LineChart · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div style="max-width:720px"><section class="up-card" aria-labelledby="vf-t">
+  <div class="up-card__head"><h2 class="up-section__title" id="vf-t">Visão financeira</h2><span class="up-badge up-badge--outline">Maio a outubro</span></div>
+  <div class="up-chips">
+  <div class="up-chip"><span class="up-chip__head"><span class="up-chip__icon"><span class="up-icon" data-icon="trending-up"></span></span>Faturamento</span><span class="up-chip__value">R$ 48.000</span><span class="up-chip__delta"><b>+4,3%</b> vs. setembro</span></div>
+  <div class="up-chip"><span class="up-chip__head"><span class="up-chip__icon up-chip__icon--accent"><span class="up-icon" data-icon="trending-down"></span></span>Saídas</span><span class="up-chip__value">R$ 47.620</span><span class="up-chip__delta"><b class="is-up-bad">+3,2%</b> vs. setembro</span></div>
+  <div class="up-chip"><span class="up-chip__head"><span class="up-chip__icon up-chip__icon--ink"><span class="up-icon" data-icon="equal"></span></span>Ponto de equilíbrio</span><span class="up-chip__value">R$ 45.082</span><span class="up-chip__delta">Folga de <b class="is-up-bad" style="color:var(--warning-text)">6,1%</b></span></div>
+</div>
+  <div style="margin-top:20px"><div class="up-linechart">
+  <svg viewBox="0 0 600 220" role="img" aria-label="Faturamento e saídas de maio a outubro: o faturamento passa das saídas a partir de agosto, exceto em setembro."><line class="grid" x1="44" x2="586" y1="161.1" y2="161.1"/><text class="axis" x="36" y="165.1" text-anchor="end">40 mil</text><line class="grid" x1="44" x2="586" y1="99.0" y2="99.0"/><text class="axis" x="36" y="103.0" text-anchor="end">45 mil</text><line class="grid" x1="44" x2="586" y1="36.9" y2="36.9"/><text class="axis" x="36" y="40.9" text-anchor="end">50 mil</text><polygon class="wash-a" points="44.0,186 44.0,148.7 152.4,117.6 260.8,101.5 369.2,75.4 477.6,86.6 586.0,61.7 586.0,186"/><line class="cursor" x1="586.0" x2="586.0" y1="12" y2="186"/><polyline class="s-b" points="44.0,125.7 152.4,106.2 260.8,97.6 369.2,78.4 477.6,84.7 586.0,66.4"/><polyline class="s-a" points="44.0,148.7 152.4,117.6 260.8,101.5 369.2,75.4 477.6,86.6 586.0,61.7"/><circle class="dot-a" cx="44.0" cy="148.7" r="4.5"/><circle class="dot-a" cx="152.4" cy="117.6" r="4.5"/><circle class="dot-a" cx="260.8" cy="101.5" r="4.5"/><circle class="dot-a" cx="369.2" cy="75.4" r="4.5"/><circle class="dot-a" cx="477.6" cy="86.6" r="4.5"/><circle class="dot-a" cx="586.0" cy="61.7" r="4.5"/><circle class="dot-b" cx="44.0" cy="125.7" r="4.5"/><circle class="dot-b" cx="152.4" cy="106.2" r="4.5"/><circle class="dot-b" cx="260.8" cy="97.6" r="4.5"/><circle class="dot-b" cx="369.2" cy="78.4" r="4.5"/><circle class="dot-b" cx="477.6" cy="84.7" r="4.5"/><circle class="dot-b" cx="586.0" cy="66.4" r="4.5"/><text class="axis" x="44.0" y="210" text-anchor="middle">Mai</text><text class="axis" x="152.4" y="210" text-anchor="middle">Jun</text><text class="axis" x="260.8" y="210" text-anchor="middle">Jul</text><text class="axis" x="369.2" y="210" text-anchor="middle">Ago</text><text class="axis" x="477.6" y="210" text-anchor="middle">Set</text><text class="axis axis--cur" x="586.0" y="210" text-anchor="middle">Out</text><g transform="translate(454.0,6.0)"><rect x="0" y="0" width="118" height="54" rx="10" fill="var(--surface)" stroke="var(--border-subtle)"/><text x="12" y="18" class="axis">Outubro</text><text x="12" y="34" class="axis" style="fill:var(--text-primary);font-weight:600">Fat. R$ 48.000</text><text x="12" y="48" class="axis" style="fill:var(--text-primary);font-weight:600">Saídas R$ 47.620</text></g></svg>
+  <div class="up-legend up-legend--stack"><span class="up-legend__item"><span class="up-legend__key up-legend__key--round"></span>Faturamento</span><span class="up-legend__item"><span class="up-legend__key up-legend__key--neg up-legend__key--round"></span>Saídas</span></div>
+</div>
+<table class="up-sr-only"><caption>Faturamento e saídas por mês</caption><thead><tr><th>Mês</th><th>Faturamento</th><th>Saídas</th></tr></thead><tbody><tr><th scope="row">Mai</th><td>R$ 41.000</td><td>R$ 42.850</td></tr><tr><th scope="row">Jun</th><td>R$ 43.500</td><td>R$ 44.420</td></tr><tr><th scope="row">Jul</th><td>R$ 44.800</td><td>R$ 45.110</td></tr><tr><th scope="row">Ago</th><td>R$ 46.900</td><td>R$ 46.660</td></tr><tr><th scope="row">Set</th><td>R$ 46.000</td><td>R$ 46.150</td></tr><tr><th scope="row">Out</th><td>R$ 48.000</td><td>R$ 47.620</td></tr></tbody></table></div>
+</section></div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodeInput · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <section class="ds-col" style="max-width:360px">
+    <p class="ds-cap" style="margin:0">Digitando</p>
+    <div class="up-field" role="group" aria-labelledby="ci-l">
+      <span class="up-label" id="ci-l">Código de acesso</span>
+      <div class="up-code"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="4" aria-label="Dígito 1 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="8" aria-label="Dígito 2 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="2" aria-label="Dígito 3 de 6"><input class="up-code__cell is-focus" inputmode="numeric" maxlength="1" value="" aria-label="Dígito 4 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="" aria-label="Dígito 5 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="" aria-label="Dígito 6 de 6"></div>
+      <p class="up-hint">Enviamos um código para j•••@empresa.com.br. Ele vale por 10 minutos.</p>
+    </div>
+    <button class="up-btn up-btn--link" disabled style="align-self:flex-start">Reenviar código em 0:42</button>
+  </section>
+  <section class="ds-col" style="max-width:360px">
+    <p class="ds-cap" style="margin:0">Código errado</p>
+    <div class="up-field" role="group" aria-labelledby="ci-l2">
+      <span class="up-label" id="ci-l2">Código de acesso</span>
+      <div class="up-code is-invalid"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="4" aria-label="Dígito 1 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="8" aria-label="Dígito 2 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="2" aria-label="Dígito 3 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="9" aria-label="Dígito 4 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="1" aria-label="Dígito 5 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="7" aria-label="Dígito 6 de 6"></div>
+      <p class="up-hint up-hint--error" role="alert"><span class="up-icon" data-icon="octagon-alert"></span>Código incorreto. Confira o e-mail e tente de novo.</p>
+    </div>
+    <button class="up-btn up-btn--link" style="align-self:flex-start">Reenviar código</button>
+  </section>
+</div>
+<section class="ds-sec" style="max-width:360px">
+  <p class="ds-cap">Celular · 320px de largura</p>
+  <div style="width:288px"><div class="up-code"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="" aria-label="Dígito 1 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="" aria-label="Dígito 2 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="" aria-label="Dígito 3 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="" aria-label="Dígito 4 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="" aria-label="Dígito 5 de 6"><input class="up-code__cell" inputmode="numeric" maxlength="1" value="" aria-label="Dígito 6 de 6"></div></div>
+</section>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

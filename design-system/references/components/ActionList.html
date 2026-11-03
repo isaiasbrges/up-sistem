@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ActionList · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <section>
+    <p class="ds-cap">Raio-X · as três primeiras ações</p>
+    <div class="up-card">
+      <ol class="up-actionlist">
+        <li class="up-actionlist__item"><span>Comece pelas dívidas em atraso e procure renegociar primeiro as de juros mais altos.<span class="up-actionlist__meta">2 dívidas em atraso</span></span></li>
+        <li class="up-actionlist__item"><span>Separe as contas: a conta da empresa paga só a empresa, e você define um dia fixo e um valor fixo de retirada.</span></li>
+        <li class="up-actionlist__item"><span>Defina um valor fixo por mês para começar a reserva da empresa.</span></li>
+      </ol>
+    </div>
+  </section>
+  <section>
+    <p class="ds-cap">Nada se aplica</p>
+    <div class="up-alert up-alert--success"><span class="up-alert__icon"><span class="up-icon" data-icon="circle-check"></span></span><div class="up-alert__body"><p class="up-alert__title">Seus números estão saudáveis.</p><p class="up-alert__text">Use o Módulo 3 para crescer com base.</p></div></div>
+  </section>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+.ds-logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.ds-lg{margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;height:220px;border-radius:var(--radius-lg);padding:20px}
+.ds-lg img{display:block;max-width:100%}
+.ds-lg--ink{background:var(--surface-inverse)}
+.ds-lg--ink figcaption{color:var(--text-inverse-muted)}
+.ds-lg--cream{background:var(--bg-canvas);box-shadow:inset 0 0 0 1px var(--border-subtle)}
+.ds-lg figcaption{font-size:12px;line-height:16px;color:var(--text-muted);text-align:center}
+.ds-min{display:inline-flex;flex-direction:column;align-items:flex-start;gap:8px}
+.ds-min img{display:block;height:auto}
+.ds-min img[style*='height:20px']{height:20px;width:auto}
+.ds-min small,.ds-note{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-clear{display:inline-block;padding:14px;outline:1px dashed var(--border-control);outline-offset:0;margin-bottom:8px;background:var(--surface)}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-logos">
+  <figure class="ds-lg ds-lg--ink"><img src="../../assets/logos/up-logo-branco.png" alt="UP Universo do Propósito" style="width:200px"><figcaption>Assinatura · branca sobre brand-black</figcaption></figure>
+  <figure class="ds-lg ds-lg--cream"><img src="../../assets/logos/up-logo-preto.png" alt="UP Universo do Propósito" style="width:200px"><figcaption>Assinatura · preta sobre brand-cream</figcaption></figure>
+  <figure class="ds-lg ds-lg--ink"><img src="../../assets/logos/up-simbolo-branco.png" alt="UP" style="height:56px"><figcaption>Símbolo · branco</figcaption></figure>
+  <figure class="ds-lg ds-lg--cream"><img src="../../assets/logos/up-simbolo-preto.png" alt="UP" style="height:56px"><figcaption>Símbolo · preto</figcaption></figure>
+</div>
+<section class="ds-row ds-row--top" style="gap:56px;margin-top:32px">
+  <div>
+    <p class="ds-cap">Tamanho mínimo</p>
+    <div class="ds-row" style="gap:28px;align-items:flex-end">
+      <span class="ds-min"><img src="../../assets/logos/up-logo-preto.png" alt="" style="width:120px"><small>Assinatura ≥ 120px de largura</small></span>
+      <span class="ds-min"><img src="../../assets/logos/up-simbolo-preto.png" alt="" style="height:20px"><small>Símbolo ≥ 20px de altura</small></span>
+    </div>
+  </div>
+  <div>
+    <p class="ds-cap">Área de proteção</p>
+    <span class="ds-clear"><img src="../../assets/logos/up-simbolo-preto.png" alt="" style="height:64px;display:block"></span>
+    <small class="ds-note" style="display:block;max-width:260px">Margem livre = altura da seta ↗ do símbolo (≈ 22% da altura do símbolo).</small>
+  </div>
+</section>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Badge · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<section class="ds-sec">
+  <p class="ds-cap">Semáforo · ícone + palavra, nunca só cor</p>
+  <div class="ds-row">
+    <span class="up-badge up-badge--success"><span class="up-icon" data-icon="circle-check"></span>Verde</span>
+    <span class="up-badge up-badge--warning"><span class="up-icon" data-icon="triangle-alert"></span>Amarelo</span>
+    <span class="up-badge up-badge--danger"><span class="up-icon" data-icon="octagon-alert"></span>Vermelho</span>
+    <span class="up-badge up-badge--sm up-badge--success"><span class="up-icon" data-icon="circle-check"></span>Verde</span>
+    <span class="up-badge up-badge--sm up-badge--warning"><span class="up-icon" data-icon="triangle-alert"></span>Amarelo</span>
+    <span class="up-badge up-badge--sm up-badge--danger"><span class="up-icon" data-icon="octagon-alert"></span>Vermelho</span>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Andamento das ferramentas</p>
+  <div class="ds-row">
+    <span class="up-badge up-badge--success"><span class="up-icon" data-icon="circle-check"></span>Concluído</span>
+    <span class="up-badge up-badge--info">Em andamento</span>
+    <span class="up-badge">Não iniciado</span>
+    <span class="up-badge up-badge--outline">Inicial</span>
+    <span class="up-badge up-badge--outline">Refeito</span>
+    <span class="up-badge up-badge--warning">Estimativa</span>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Acesso · aluno e admin</p>
+  <div class="ds-row">
+    <span class="up-badge up-badge--success">Ativo</span>
+    <span class="up-badge"><span class="up-icon" data-icon="lock"></span>Bloqueado</span>
+    <span class="up-badge">Reembolsado</span>
+    <span class="up-badge up-badge--danger">Chargeback</span>
+    <span class="up-badge">Revogado</span>
+    <span class="up-badge up-badge--accent">Kit UP</span>
+    <span style="display:inline-flex;padding:6px 8px;border-radius:var(--radius-full);background:var(--surface-hero)"><span class="up-badge up-badge--on-hero">Outubro de 2026</span></span>
+    <span style="display:inline-flex;padding:6px 8px;border-radius:var(--radius-md);background:var(--surface-inverse)"><span class="up-badge up-badge--inverse"><span class="up-icon" data-icon="lock"></span>Kit UP</span></span>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Rótulo da IA · pontos de status</p>
+  <div class="ds-row" style="gap:24px">
+    <span class="up-ai-label"><span class="up-icon" data-icon="pen-line"></span>Escrito com apoio de IA</span>
+    <span class="ds-row" style="gap:8px"><span class="up-dot up-dot--success"></span><span class="up-dot up-dot--warning"></span><span class="up-dot up-dot--danger"></span><span class="up-dot up-dot--primary"></span><span class="up-dot"></span></span>
+  </div>
+</section>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

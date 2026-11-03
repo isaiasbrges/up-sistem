@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radio · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <section>
+    <p class="ds-cap">Opção em cartão · Diagnóstico, passo 3</p>
+    <fieldset style="border:0;margin:0;padding:0">
+      <legend class="up-label" style="margin-bottom:12px;padding:0">Qual é hoje a sua maior dificuldade?</legend>
+      <div class="up-options"><label class="up-option"><input class="up-radio" type="radio" name="dif">Conseguir clientes</label><label class="up-option"><input class="up-radio" type="radio" name="dif" checked>Dinheiro que não fecha</label><label class="up-option"><input class="up-radio" type="radio" name="dif">Organização e equipe</label><label class="up-option"><input class="up-radio" type="radio" name="dif">Uma decisão travada</label><label class="up-option"><input class="up-radio" type="radio" name="dif">Não sei por onde começar</label></div>
+    </fieldset>
+  </section>
+  <section class="ds-col" style="gap:28px">
+    <div>
+      <p class="ds-cap">Segmentado · Raio-X, D3</p>
+      <div class="up-field">
+        <span class="up-label" id="rd-d3">As contas da casa e da empresa são separadas?</span>
+        <div class="up-segmented up-segmented--block" role="radiogroup" aria-labelledby="rd-d3">
+          <button class="up-segmented__item" role="radio" aria-checked="false">Sim</button>
+          <button class="up-segmented__item" role="radio" aria-checked="true">Às vezes</button>
+          <button class="up-segmented__item" role="radio" aria-checked="false">Não</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="ds-cap">Escala 0 a 10 · Roda e Radar</p>
+      <div class="up-field">
+        <span class="up-label" id="rd-sc">Saúde e energia</span>
+        <div class="up-scale" role="radiogroup" aria-labelledby="rd-sc"><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">0</button><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">1</button><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">2</button><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">3</button><button class="up-scale__item" role="radio" aria-checked="true" tabindex="0">4</button><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">5</button><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">6</button><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">7</button><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">8</button><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">9</button><button class="up-scale__item" role="radio" aria-checked="false" tabindex="-1">10</button></div>
+      </div>
+    </div>
+    <div>
+      <p class="ds-cap">Radio simples · estados</p>
+      <div class="ds-col" style="gap:0">
+        <label class="up-check"><input class="up-radio" type="radio" name="r1">Entrada</label>
+        <label class="up-check"><input class="up-radio" type="radio" name="r1" checked>Saída</label>
+        <label class="up-check"><input class="up-radio is-focus" type="radio" name="r2">Com foco de teclado</label>
+        <label class="up-check"><input class="up-radio" type="radio" disabled>Desativado</label>
+      </div>
+    </div>
+  </section>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

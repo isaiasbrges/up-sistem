@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Button · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<section class="ds-sec">
+  <p class="ds-cap">Variantes · md</p>
+  <div class="ds-row">
+    <button class="up-btn up-btn--md up-btn--primary">Enviar código</button>
+    <button class="up-btn up-btn--md up-btn--dark">Novo mês<span class="up-icon" data-icon="plus"></span></button>
+    <button class="up-btn up-btn--md up-btn--secondary">Ver histórico</button>
+    <button class="up-btn up-btn--md up-btn--ghost">Cancelar</button>
+    <button class="up-btn up-btn--md up-btn--accent">Conhecer o Kit</button>
+    <button class="up-btn up-btn--md up-btn--danger">Remover acesso</button>
+    <button class="up-btn up-btn--link">Reenviar código</button>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Tamanhos · sm 32 · md 40 · lg 48</p>
+  <div class="ds-row">
+    <button class="up-btn up-btn--sm up-btn--primary">Salvar</button>
+    <button class="up-btn up-btn--md up-btn--primary">Salvar</button>
+    <button class="up-btn up-btn--lg up-btn--primary">Salvar</button>
+    <button class="up-btn up-btn--sm up-btn--secondary"><span class="up-icon" data-icon="download"></span>Exportar CSV</button>
+    <button class="up-btn up-btn--md up-btn--secondary"><span class="up-icon" data-icon="download"></span>Exportar CSV</button>
+    <button class="up-btn up-btn--lg up-btn--secondary"><span class="up-icon" data-icon="download"></span>Exportar CSV</button>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Estados · primário md</p>
+  <div class="ds-row ds-row--top">
+    <div class="ds-state"><button class="up-btn up-btn--md up-btn--primary">Ver resultado</button><small>Padrão</small></div>
+    <div class="ds-state"><button class="up-btn up-btn--md up-btn--primary is-hover">Ver resultado</button><small>Hover</small></div>
+    <div class="ds-state"><button class="up-btn up-btn--md up-btn--primary is-active">Ver resultado</button><small>Pressionado</small></div>
+    <div class="ds-state"><button class="up-btn up-btn--md up-btn--primary is-focus">Ver resultado</button><small>Foco (teclado)</small></div>
+    <div class="ds-state"><button class="up-btn up-btn--md up-btn--primary" disabled>Ver resultado</button><small>Desativado</small></div>
+    <div class="ds-state"><button class="up-btn up-btn--md up-btn--primary is-loading" aria-busy="true"><span class="up-spinner" aria-hidden="true"></span>Enviando</button><small>Carregando</small></div>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Com ícone</p>
+  <div class="ds-row">
+    <button class="up-btn up-btn--md up-btn--primary">Ver resultado<span class="up-icon" data-icon="arrow-right"></span></button>
+    <button class="up-btn up-btn--md up-btn--secondary"><span class="up-icon" data-icon="copy"></span>Copiar</button>
+    <button class="up-btn up-btn--md up-btn--secondary"><span class="up-icon" data-icon="message-circle"></span>Abrir no WhatsApp</button>
+    <button class="up-btn up-btn--md up-btn--ghost"><span class="up-icon" data-icon="refresh-cw"></span>Refazer diagnóstico</button>
+    <button class="up-btn up-btn--md up-btn--accent">Conhecer o Kit<span class="up-icon" data-icon="arrow-up-right"></span></button>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Sobre o card de destaque · branco e escuro</p>
+  <div class="ds-row" style="padding:20px;border-radius:var(--radius-xl);background:var(--surface-hero);max-width:420px">
+    <a class="up-btn up-btn--md up-btn--white" href="#">Ver Raio-X<span class="up-icon" data-icon="arrow-up-right"></span></a>
+    <a class="up-btn up-btn--md up-btn--dark" href="#">Novo mês<span class="up-icon" data-icon="plus"></span></a>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Celular · ação principal em largura total</p>
+  <div class="ds-col" style="max-width:358px;gap:8px">
+    <button class="up-btn up-btn--lg up-btn--primary up-btn--block">Continuar</button>
+    <button class="up-btn up-btn--lg up-btn--ghost up-btn--block">Voltar</button>
+  </div>
+</section>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

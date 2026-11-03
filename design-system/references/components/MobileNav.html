@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MobileNav · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-row ds-row--top" style="gap:32px">
+  <section><p class="ds-cap">Sem Kit · Início ativo</p><div style="width:390px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden"><nav class="up-tabbar" aria-label="Principal" style="position:static"><a class="up-tabbar__item" href="#" aria-current="page"><span class="up-tabbar__icon"><span class="up-icon" data-icon="home"></span></span><span class="up-tabbar__text">Início</span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="clipboard-check"></span></span><span class="up-tabbar__text">Diagnóstico</span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="chart-bar"></span></span><span class="up-tabbar__text">Raio-X</span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="crown"></span><span class="up-tabbar__lock"><span class="up-icon" data-icon="lock"></span></span></span><span class="up-tabbar__text">Kit UP<span class="up-sr-only">, bloqueado</span></span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="history"></span></span><span class="up-tabbar__text">Histórico</span></a></nav></div></section>
+  <section><p class="ds-cap">Com Kit · Raio-X ativo</p><div style="width:390px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden"><nav class="up-tabbar" aria-label="Principal" style="position:static"><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="home"></span></span><span class="up-tabbar__text">Início</span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="clipboard-check"></span></span><span class="up-tabbar__text">Diagnóstico</span></a><a class="up-tabbar__item" href="#" aria-current="page"><span class="up-tabbar__icon"><span class="up-icon" data-icon="chart-bar"></span></span><span class="up-tabbar__text">Raio-X</span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="crown"></span></span><span class="up-tabbar__text">Kit UP</span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="history"></span></span><span class="up-tabbar__text">Histórico</span></a></nav></div></section>
+  <section><p class="ds-cap">Celular estreito · 320px</p><div style="width:320px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden"><nav class="up-tabbar" aria-label="Principal" style="position:static"><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="home"></span></span><span class="up-tabbar__text">Início</span></a><a class="up-tabbar__item" href="#" aria-current="page"><span class="up-tabbar__icon"><span class="up-icon" data-icon="clipboard-check"></span></span><span class="up-tabbar__text">Diagnóstico</span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="chart-bar"></span></span><span class="up-tabbar__text">Raio-X</span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="crown"></span><span class="up-tabbar__lock"><span class="up-icon" data-icon="lock"></span></span></span><span class="up-tabbar__text">Kit UP<span class="up-sr-only">, bloqueado</span></span></a><a class="up-tabbar__item" href="#"><span class="up-tabbar__icon"><span class="up-icon" data-icon="history"></span></span><span class="up-tabbar__text">Histórico</span></a></nav></div></section>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

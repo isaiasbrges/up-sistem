@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BarChart · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div style="max-width:760px"><section class="up-card" aria-labelledby="c-t">
+  <div class="up-card__head" style="align-items:flex-start;flex-wrap:wrap">
+    <div><h2 class="up-card__title" id="c-t">Sobra após dívidas, mês a mês</h2><p class="up-card__desc">Raio-X salvos de maio a outubro.</p></div>
+    <div class="up-legend"><span class="up-legend__item"><span class="up-legend__key"></span>Sobrou</span><span class="up-legend__item"><span class="up-legend__key up-legend__key--neg"></span>Faltou</span></div>
+  </div>
+  <div class="up-chart" style="--h:300px" role="img" aria-label="Sobra após dívidas de maio a outubro: negativa em maio, junho, julho e setembro; positiva em agosto e outubro, com R$ 380.">
+  <div class="up-chart__y" aria-hidden="true"><span style="top:0.0px">1 mil</span><span style="top:100.0px">0</span><span style="top:200.0px">−1 mil</span><span style="top:300.0px">−2 mil</span></div>
+  <div class="up-chart__plot" aria-hidden="true"><span class="up-chart__grid" style="top:0.0px"></span><span class="up-chart__grid up-chart__grid--zero" style="top:100.0px"></span><span class="up-chart__grid" style="top:200.0px"></span><span class="up-chart__grid" style="top:300.0px"></span><div class="up-chart__cols"><div class="up-chart__col" title="Maio: −R$ 1.850"><span class="up-chart__bar up-chart__bar--neg" style="top:100.0px;height:185.0px"></span></div><div class="up-chart__col" title="Junho: −R$ 920"><span class="up-chart__bar up-chart__bar--neg" style="top:100.0px;height:92.0px"></span></div><div class="up-chart__col" title="Julho: −R$ 310"><span class="up-chart__bar up-chart__bar--neg" style="top:100.0px;height:31.0px"></span></div><div class="up-chart__col" title="Agosto: R$ 240"><span class="up-chart__bar" style="top:76.0px;height:24.0px"></span></div><div class="up-chart__col" title="Setembro: −R$ 150"><span class="up-chart__bar up-chart__bar--neg" style="top:100.0px;height:15.0px"></span></div><div class="up-chart__col" title="Outubro: R$ 380"><span class="up-chart__bar" style="top:62.0px;height:38.0px"></span></div></div><div class="up-chart__tip" style="left:91.67%;top:62.0px">Outubro<b>R$ 380</b></div></div>
+  <div class="up-chart__x" aria-hidden="true"><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span><span>Set</span><span class="is-current">Out</span></div>
+</div>
+<table class="up-sr-only"><caption>Sobra após dívidas por mês</caption><tbody><tr><th scope="row">Maio</th><td>−R$ 1.850</td></tr><tr><th scope="row">Junho</th><td>−R$ 920</td></tr><tr><th scope="row">Julho</th><td>−R$ 310</td></tr><tr><th scope="row">Agosto</th><td>R$ 240</td></tr><tr><th scope="row">Setembro</th><td>−R$ 150</td></tr><tr><th scope="row">Outubro</th><td>R$ 380</td></tr></tbody></table>
+</section></div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

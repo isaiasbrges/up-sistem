@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>States · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+.ds-matrix{border-collapse:collapse;width:100%}
+.ds-matrix th,.ds-matrix td{padding:12px 10px;text-align:left;vertical-align:middle;border-top:1px solid var(--border-subtle)}
+.ds-matrix thead th{border-top:0;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.ds-matrix tbody th{font-size:14px;line-height:20px;font-weight:500;width:150px}
+.ds-matrix td .up-control{width:150px}
+.ds-ink{display:inline-block;padding:6px;border-radius:var(--radius-md);background:var(--surface);box-shadow:inset 0 0 0 1px var(--border-subtle);width:168px}
+.ds-legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px;margin-top:20px;font-size:14px;line-height:20px;color:var(--text-secondary)}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<table class="ds-matrix">
+  <thead><tr><th></th><th scope="col">Padrão</th><th scope="col">Hover</th><th scope="col">Pressionado · erro · selecionado</th><th scope="col">Foco (teclado)</th><th scope="col">Desativado · bloqueado</th></tr></thead>
+  <tbody><tr><th scope="row">Botão primário</th><td><button class="up-btn up-btn--md up-btn--primary">Salvar</button></td><td><button class="up-btn up-btn--md up-btn--primary is-hover">Salvar</button></td><td><button class="up-btn up-btn--md up-btn--primary is-active">Salvar</button></td><td><button class="up-btn up-btn--md up-btn--primary is-focus">Salvar</button></td><td><button class="up-btn up-btn--md up-btn--primary" disabled>Salvar</button></td></tr><tr><th scope="row">Botão secundário</th><td><button class="up-btn up-btn--md up-btn--secondary">Voltar</button></td><td><button class="up-btn up-btn--md up-btn--secondary is-hover">Voltar</button></td><td><button class="up-btn up-btn--md up-btn--secondary is-active">Voltar</button></td><td><button class="up-btn up-btn--md up-btn--secondary is-focus">Voltar</button></td><td><button class="up-btn up-btn--md up-btn--secondary" disabled>Voltar</button></td></tr><tr><th scope="row">Campo</th><td><div class="up-control up-control--md"><input class="up-input" value="R$ 4.500" aria-label="Aluguel"></div></td><td><div class="up-control up-control--md is-hover"><input class="up-input" value="R$ 4.500" aria-label="Aluguel"></div></td><td><div class="up-control up-control--md is-invalid"><input class="up-input" value="abc" aria-label="Aluguel" aria-invalid="true"></div></td><td><div class="up-control up-control--md is-focus"><input class="up-input" value="R$ 4.500" aria-label="Aluguel"></div></td><td><div class="up-control up-control--md is-disabled"><input class="up-input" value="R$ 4.500" aria-label="Aluguel" disabled></div></td></tr><tr><th scope="row">Checkbox</th><td><input class="up-checkbox" type="checkbox" aria-label="a"></td><td><input class="up-checkbox is-hover" type="checkbox" aria-label="b"></td><td><input class="up-checkbox" type="checkbox" checked aria-label="c"></td><td><input class="up-checkbox is-focus" type="checkbox" aria-label="d"></td><td><input class="up-checkbox" type="checkbox" disabled aria-label="e"></td></tr><tr><th scope="row">Navegação</th><td><span class="ds-ink"><a class="up-navitem" href="#"><span class="up-icon" data-icon="chart-bar"></span>Raio-X</a></span></td><td><span class="ds-ink"><a class="up-navitem is-hover" href="#"><span class="up-icon" data-icon="chart-bar"></span>Raio-X</a></span></td><td><span class="ds-ink"><a class="up-navitem" href="#" aria-current="page"><span class="up-icon" data-icon="chart-bar"></span>Raio-X</a></span></td><td><span class="ds-ink"><a class="up-navitem" href="#" style="outline:2px solid var(--focus-ring);outline-offset:2px"><span class="up-icon" data-icon="chart-bar"></span>Raio-X</a></span></td><td><span class="ds-ink"><a class="up-navitem is-locked" href="#"><span class="up-icon" data-icon="package"></span>Kit UP<span class="up-navitem__trail"><span class="up-icon" data-icon="lock"></span></span></a></span></td></tr></tbody>
+</table>
+<div class="ds-legend">
+  <p><b>Hover</b> escurece um passo (primary → primary-hover) ou soma state-hover sobre superfícies claras.</p>
+  <p><b>Pressionado</b> escurece mais um passo (primary-active) ou soma state-pressed.</p>
+  <p><b>Foco</b> é sempre um anel sólido de 2px em focus-ring, afastado 2px; sobre preto, focus-ring-inverse; sobre o azul do destaque, branco.</p>
+  <p><b>Desativado</b> usa surface-muted e text-disabled; bloqueado por acesso continua clicável e leva à oferta.</p>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

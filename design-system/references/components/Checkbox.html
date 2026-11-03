@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkbox · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <section>
+    <p class="ds-cap">Estados</p>
+    <div class="ds-col" style="gap:0">
+      <label class="up-check"><input class="up-checkbox" type="checkbox">Está em atraso?</label>
+      <label class="up-check"><input class="up-checkbox" type="checkbox" checked>Estimativa, conferir depois</label>
+      <label class="up-check"><input class="up-checkbox is-focus" type="checkbox">Com foco de teclado</label>
+      <label class="up-check"><input class="up-checkbox" type="checkbox" id="cb-ind">Selecionar todas as contas</label>
+      <label class="up-check"><input class="up-checkbox" type="checkbox" disabled>Desativado</label>
+      <label class="up-check"><input class="up-checkbox" type="checkbox" checked disabled>Desativado e marcado</label>
+    </div>
+  </section>
+  <section>
+    <p class="ds-cap">Com descrição · primeiro acesso</p>
+    <label class="up-check"><input class="up-checkbox" type="checkbox"><span>Li e aceito o Termo de uso e a Política de privacidade<span class="up-check__desc">Parte dos textos é escrita com apoio de IA. Os dados enviados para a IA não incluem seu nome nem seu contato.</span></span></label>
+    <p class="ds-cap" style="margin-top:16px">Pequeno · abaixo de campos</p>
+    <label class="up-check up-check--sm"><input class="up-checkbox" type="checkbox" checked>Estimativa, conferir depois</label>
+  </section>
+</div>
+<script>window.UP && window.UP.hydrate();document.getElementById('cb-ind').indeterminate = true;</script>
+</body>
+</html>

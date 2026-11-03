@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PlanBanner · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-col" style="max-width:640px">
+  <div><p class="ds-cap">Só o produto principal</p><section class="up-plan" aria-labelledby="plan-t">
+  <span class="up-tile up-tile--accent"><span class="up-icon" data-icon="crown"></span></span>
+  <div class="up-plan__body"><h2 class="up-plan__title" id="plan-t">Diagnóstico e Raio-X liberados</h2><p class="up-plan__text">Roteiros, ofertas modelo e Plano de 90 Dias estão no Kit UP.</p></div>
+  <a class="up-btn up-btn--accent" href="#">Conhecer o Kit<span class="up-icon" data-icon="arrow-right"></span></a>
+</section></div>
+  <div><p class="ds-cap">Kit Essencial</p><section class="up-plan"><span class="up-tile up-tile--accent"><span class="up-icon" data-icon="book-open"></span></span><div class="up-plan__body"><h2 class="up-plan__title">Kit Essencial ativo</h2><p class="up-plan__text">Ofertas modelo, Plano de 90 Dias e kit de transferência estão no Kit UP.</p></div><a class="up-btn up-btn--accent" href="#">Conhecer o Kit<span class="up-icon" data-icon="arrow-right"></span></a></section></div>
+  <div><p class="ds-cap">Kit UP de Implementação</p><section class="up-plan"><span class="up-tile up-tile--solid-accent"><span class="up-icon" data-icon="crown"></span></span><div class="up-plan__body"><h2 class="up-plan__title">Você está no Kit UP de Implementação</h2><p class="up-plan__text">Todas as ferramentas e o Kit completo estão liberados.</p></div><a class="up-btn up-btn--secondary" href="#">Abrir o Kit<span class="up-icon" data-icon="arrow-right"></span></a></section></div>
+  <div><p class="ds-cap">Acesso encerrado</p><section class="up-plan"><span class="up-tile up-tile--muted"><span class="up-icon" data-icon="lock"></span></span><div class="up-plan__body"><h2 class="up-plan__title">Seu acesso ao Kit UP foi encerrado</h2><p class="up-plan__text">Os dados que você preencheu continuam guardados.</p></div><a class="up-btn up-btn--secondary" href="#">Falar com o suporte</a></section></div>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

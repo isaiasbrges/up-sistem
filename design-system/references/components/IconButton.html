@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IconButton · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<section class="ds-sec">
+  <p class="ds-cap">Variantes · md</p>
+  <div class="ds-row">
+    <button class="up-icon-btn up-icon-btn--md" aria-label="Mais opções"><span class="up-icon" data-icon="ellipsis"></span></button>
+    <button class="up-icon-btn up-icon-btn--md up-icon-btn--secondary" aria-label="Copiar mensagem"><span class="up-icon" data-icon="copy"></span></button>
+    <button class="up-icon-btn up-icon-btn--md up-icon-btn--primary" aria-label="Adicionar dívida"><span class="up-icon" data-icon="plus"></span></button>
+    <button class="up-icon-btn up-icon-btn--md up-icon-btn--dark" aria-label="Novo mês"><span class="up-icon" data-icon="plus"></span></button>
+    <span style="display:inline-flex;padding:6px;border-radius:var(--radius-full);background:var(--surface-hero)"><button class="up-icon-btn up-icon-btn--md up-icon-btn--white" aria-label="Abrir Raio-X"><span class="up-icon" data-icon="arrow-up-right"></span></button></span>
+    <span style="display:inline-flex;padding:6px;border-radius:var(--radius-full);background:var(--surface-inverse)"><button class="up-icon-btn up-icon-btn--md up-icon-btn--inverse" aria-label="Sair"><span class="up-icon" data-icon="log-out"></span></button></span>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Tamanhos · sm 32 · md 40 · lg 48</p>
+  <div class="ds-row">
+    <button class="up-icon-btn up-icon-btn--sm up-icon-btn--secondary" aria-label="Fechar"><span class="up-icon" data-icon="x"></span></button>
+    <button class="up-icon-btn up-icon-btn--md up-icon-btn--secondary" aria-label="Fechar"><span class="up-icon" data-icon="x"></span></button>
+    <button class="up-icon-btn up-icon-btn--lg up-icon-btn--secondary" aria-label="Fechar"><span class="up-icon" data-icon="x"></span></button>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Estados · fantasma md</p>
+  <div class="ds-row ds-row--top">
+    <div class="ds-state"><button class="up-icon-btn up-icon-btn--md" aria-label="Voltar"><span class="up-icon" data-icon="arrow-left"></span></button><small>Padrão</small></div>
+    <div class="ds-state"><button class="up-icon-btn up-icon-btn--md is-hover" aria-label="Voltar"><span class="up-icon" data-icon="arrow-left"></span></button><small>Hover</small></div>
+    <div class="ds-state"><button class="up-icon-btn up-icon-btn--md is-active" aria-label="Voltar"><span class="up-icon" data-icon="arrow-left"></span></button><small>Pressionado</small></div>
+    <div class="ds-state"><button class="up-icon-btn up-icon-btn--md is-focus" aria-label="Voltar"><span class="up-icon" data-icon="arrow-left"></span></button><small>Foco</small></div>
+    <div class="ds-state"><button class="up-icon-btn up-icon-btn--md" aria-label="Voltar" disabled><span class="up-icon" data-icon="arrow-left"></span></button><small>Desativado</small></div>
+  </div>
+</section>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

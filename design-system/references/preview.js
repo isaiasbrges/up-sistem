@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{const bar=document.createElement('nav');bar.className='ds-reference-tools';bar.setAttribute('aria-label','Ferramentas da referência');bar.innerHTML='<a href="../../index.html">← Catálogo UP</a>'+window.UPTheme.button();document.body.prepend(bar);});

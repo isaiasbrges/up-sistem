@@ -1,0 +1,1 @@
+ALTER TABLE up.user_drafts ADD COLUMN step smallint NOT NULL DEFAULT 0 CHECK (step BETWEEN 0 AND 5);

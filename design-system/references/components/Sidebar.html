@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sidebar · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+body{padding:24px}
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div style="display:flex;gap:32px;align-items:flex-start">
+  <div><p class="ds-cap">Aluno · sem Kit</p><div style="height:800px;border-radius:var(--radius-lg);overflow:hidden"><nav class="up-sidebar up-sidebar--inverse" aria-label="Principal">
+  <a class="up-sidebar__brand up-sidebar__brand--lockup" href="#" aria-label="Software UP, início"><img src="../../assets/logos/up-logo-branco.png" alt="UP Universo do Propósito"></a>
+  <ul class="up-navlist"><li><a class="up-navitem" href="#" aria-current="page"><span class="up-icon" data-icon="home"></span><span>Início</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="clipboard-check"></span><span>Diagnóstico UP</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="chart-bar"></span><span>Raio-X financeiro</span></a></li><li><a class="up-navitem is-locked" href="#"><span class="up-icon" data-icon="crown"></span><span>Kit UP</span><span class="up-navitem__trail"><span class="up-icon" data-icon="lock"></span><span class="up-sr-only">, bloqueado</span></span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="history"></span><span>Histórico</span></a></li></ul>
+  <div class="up-sidebar__foot"><ul class="up-navlist"><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="user"></span><span>Minha conta</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="circle-help"></span><span>Ajuda e suporte</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="log-out"></span><span>Sair</span></a></li></ul></div>
+</nav></div></div>
+  <div><p class="ds-cap">Admin</p><div style="height:800px;border-radius:var(--radius-lg);overflow:hidden"><nav class="up-sidebar up-sidebar--inverse" aria-label="Administração">
+  <a class="up-sidebar__brand" href="#" aria-label="Software UP, admin"><img src="../../assets/logos/up-simbolo-branco.png" alt="UP"></a>
+  <a class="up-userchip" href="#"><span class="up-avatar up-avatar--sm up-avatar--inverse" aria-hidden="true">EQ</span><span class="up-user__text"><span class="up-user__name">Equipe UP</span><span class="up-user__mail">Perfil admin</span></span><span class="up-icon" data-icon="chevron-down"></span></a>
+  <div class="up-sidebar__group"><p class="up-sidebar__label">Administração</p><ul class="up-navlist"><li><a class="up-navitem" href="#" aria-current="page"><span class="up-icon" data-icon="users"></span><span>Alunos</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="history"></span><span>Eventos da Kiwify</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="package"></span><span>Produtos</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="pen-line"></span><span>IA</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="file-text"></span><span>Conteúdo</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="sliders-horizontal"></span><span>Configurações</span></a></li><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="chart-bar"></span><span>Relatórios</span></a></li></ul></div>
+  <div class="up-sidebar__foot"><ul class="up-navlist"><li><a class="up-navitem" href="#"><span class="up-icon" data-icon="log-out"></span><span>Sair</span></a></li></ul></div>
+</nav></div></div>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

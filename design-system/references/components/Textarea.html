@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Textarea · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <div class="up-field">
+    <label class="up-label" for="ta-ev">Evidência</label>
+    <p class="up-hint" id="ta-ev-h" style="margin-top:-4px">O que aconteceu nos últimos 90 dias que justifica essa nota?</p>
+    <div class="up-control up-control--area"><textarea class="up-textarea" id="ta-ev" aria-describedby="ta-ev-h">Dormi mal a maior parte do trimestre e parei a academia em agosto.</textarea></div>
+  </div>
+  <div class="up-field">
+    <label class="up-label" for="ta-op">Quer contar mais? <span class="up-label__opt">(opcional)</span></label>
+    <div class="up-control up-control--area is-focus"><textarea class="up-textarea" id="ta-op" placeholder="Escreva com suas palavras"></textarea></div>
+  </div>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

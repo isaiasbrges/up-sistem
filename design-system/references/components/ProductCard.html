@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProductCard · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<p class="ds-cap">Desktop · 4 por linha (2 no tablet, 2 compactos no celular)</p>
+<div class="up-products">
+  <a class="up-product" href="#"><span class="up-tile up-tile--primary"><span class="up-icon" data-icon="clipboard-check"></span></span><span class="up-product__body"><span class="up-product__title">Diagnóstico UP</span><span class="up-product__desc">O momento da sua vida e o gargalo da empresa.</span><div class="up-product__meta"><span class="up-badge up-badge--sm up-badge--success"><span class="up-icon" data-icon="circle-check"></span>Refeito</span></div></span><span class="up-product__go"><span class="up-icon" data-icon="chevron-right"></span></span></a>
+  <a class="up-product" href="#"><span class="up-tile up-tile--accent"><span class="up-icon" data-icon="chart-bar"></span></span><span class="up-product__body"><span class="up-product__title">Raio-X financeiro</span><span class="up-product__desc">Seus números e as primeiras ações.</span><div class="up-product__meta"><span class="up-badge up-badge--sm up-badge--outline">6 meses salvos</span></div></span><span class="up-product__go"><span class="up-icon" data-icon="chevron-right"></span></span></a>
+  <a class="up-product" href="#"><span class="up-tile up-tile--primary"><span class="up-icon" data-icon="history"></span></span><span class="up-product__body"><span class="up-product__title">Histórico</span><span class="up-product__desc">O diagnóstico inicial contra o atual.</span><div class="up-product__meta"><span class="up-badge up-badge--sm up-badge--outline">3 registros</span></div></span><span class="up-product__go"><span class="up-icon" data-icon="chevron-right"></span></span></a>
+  <a class="up-product is-locked" href="#"><span class="up-tile up-tile--accent"><span class="up-icon" data-icon="crown"></span></span><span class="up-product__body"><span class="up-product__title">Kit UP de Implementação</span><span class="up-product__desc">Roteiros, ofertas modelo e Plano de 90 Dias.</span><div class="up-product__meta"><span class="up-badge up-badge--sm"><span class="up-icon" data-icon="lock"></span>Bloqueado</span></div></span><span class="up-product__go"><span class="up-icon" data-icon="chevron-right"></span></span></a>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

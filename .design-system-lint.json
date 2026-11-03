@@ -1,0 +1,9 @@
+{
+  "source": "design-system/tokens.json",
+  "generatedCss": "design-system/tokens.css",
+  "references": "design-system/references",
+  "scan": ["app", "design-system/components", "design-system/references"],
+  "forbiddenBrandColors": ["#0031e8", "#ff8d00", "#1948f5"],
+  "minimumTextContrast": 4.5,
+  "minimumGraphicContrast": 3
+}

@@ -1,0 +1,40 @@
+/* Acabamento canônico compartilhado pelo aplicativo e pelas referências. */
+body { background-color:var(--bg-canvas); }
+:root[data-theme="dark"] .up-header__brand img { filter:brightness(0) invert(1); }
+.theme-toggle { display:grid; place-items:center; width:38px; height:38px; padding:0; border:1px solid var(--border-strong); background:var(--surface); color:var(--text-primary); border-radius:50%; cursor:pointer; }
+:root :is(button,a,input,select,textarea):focus-visible { outline:2px solid var(--focus-ring); outline-offset:3px; }
+:root :is(.btn.primary,.rating-btn.on,.side .nav-link.active,.side .nav-link.active:hover,.overview-metric.featured,.is-next .journey-step,.progress-steps .done .ball) { background:var(--primary); border-color:var(--primary-active); color:var(--on-primary); }
+:root :is(.btn.primary:hover,.overview-metric.featured:hover) { background:var(--primary-hover); border-color:var(--primary-active); color:var(--on-primary); }
+:root .btn.secondary { color:var(--primary-text); border-color:var(--primary-border); }
+:root .overview-metric.featured .metric-meta { color:var(--text-on-hero-muted); }
+:root .overview-metric.featured .metric-arrow { color:var(--on-primary); background:rgba(255,255,255,.75); }
+:root .side .nav-link.active::before { background:var(--on-primary); }
+:root :is(.square-icon,.avatar,.demotag,.btn.link,.journey-eyebrow,.journey-celebration small) { color:var(--primary-text); }
+:root .square-icon.orange { color:var(--accent-text); }
+:root .field :is(input,select,textarea) { border-color:var(--border-control); }
+:root .field [aria-invalid="true"] { border-color:var(--danger); }
+:root .gauge-value { stroke:var(--chart-primary); }
+:root .gauge-marker { fill:var(--primary); stroke:var(--text-primary); stroke-width:2; }
+:root .radar-shape { stroke:var(--chart-primary); }
+:root .radar-point { fill:var(--chart-primary); }
+:root .radar-point.attention { fill:var(--chart-highlight); }
+:root .app-body { background-color:var(--bg-canvas); background-image:radial-gradient(ellipse at 12% 0%,rgba(123,141,164,.13),transparent 50%),radial-gradient(ellipse at 100% 65%,rgba(123,141,164,.08),transparent 48%); }
+:root .auth-right { background:radial-gradient(ellipse at 100% 0%,rgba(123,141,164,.10),transparent 65%); }
+:root .sidebar-promo::after,:root .overview-focus::after { border-color:rgba(245,196,0,.10); }
+:root :is(.panel,.kpi,.financial-kpi,.overview-metric,.topbar,.mobile-top,.bottom-nav,.auth-card,.up-card,.up-product,.up-topbar,.up-header,.up-plan) { background:var(--surface); border-color:var(--border-subtle); box-shadow:var(--glass-shadow); }
+:root .overview-metric.featured { background:var(--primary); }
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+ :root :is(.panel,.kpi,.financial-kpi,.overview-metric,.topbar,.mobile-top,.bottom-nav,.auth-card,.up-card,.up-product,.up-topbar,.up-header,.up-plan) { background:var(--glass-fill); backdrop-filter:blur(var(--glass-blur)) saturate(115%); -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(115%); border-color:var(--glass-edge); }
+ :root .overview-metric.featured { background:var(--primary); }
+}
+@media(max-width:760px) {
+ :root :is(.panel,.kpi,.financial-kpi,.overview-metric,.topbar,.mobile-top,.bottom-nav,.auth-card,.up-card,.up-product,.up-header,.up-plan) { backdrop-filter:blur(var(--glass-blur-mobile)); -webkit-backdrop-filter:blur(var(--glass-blur-mobile)); }
+}
+@media(prefers-reduced-transparency:reduce) {
+ :root :is(.panel,.kpi,.financial-kpi,.overview-metric,.topbar,.mobile-top,.bottom-nav,.auth-card,.up-card,.up-product,.up-topbar,.up-header,.up-plan) { background:var(--surface); backdrop-filter:none; -webkit-backdrop-filter:none; }
+ :root .overview-metric.featured { background:var(--primary); }
+}
+@media print {
+ :root :is(.panel,.kpi,.financial-kpi,.overview-metric,.auth-card,.up-card,.up-product,.up-plan) { background:#fff; color:#181b22; box-shadow:none; backdrop-filter:none; -webkit-backdrop-filter:none; border-color:#ccd3dd; }
+ :root .overview-metric.featured .metric-meta { color:#493a0c; }
+}

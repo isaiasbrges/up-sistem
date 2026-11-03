@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <section>
+    <p class="ds-cap">Card de ferramenta</p>
+    <article class="up-card up-tool">
+      <div class="up-tool__top">
+        <span class="up-tile"><span class="up-icon" data-icon="clipboard-check"></span></span>
+        <span class="up-badge up-badge--success"><span class="up-icon" data-icon="circle-check"></span>Concluído</span>
+      </div>
+      <div class="up-tool__body">
+        <h3 class="up-card__title">Diagnóstico UP</h3>
+        <p class="up-card__desc">Roda da Plenitude e Radar da Estrutura, em 10 a 15 minutos.</p>
+      </div>
+      <dl class="up-kv">
+        <dt>Gargalo</dt><dd>Finanças</dd>
+        <dt>Dimensão de cuidado</dt><dd>Saúde e energia</dd>
+      </dl>
+      <div class="up-card__foot">
+        <span class="up-stat__meta">Inicial · 12/10/2026</span>
+        <a class="up-btn up-btn--sm up-btn--secondary" href="#">Ver resultado</a>
+      </div>
+    </article>
+  </section>
+  <section class="ds-col">
+    <p class="ds-cap" style="margin:0">Card base com cabeçalho</p>
+    <article class="up-card">
+      <div class="up-card__head">
+        <div><h3 class="up-card__title">Contas a pagar</h3><p class="up-card__desc">Vencimentos dos próximos 7 dias.</p></div>
+        <button class="up-icon-btn up-icon-btn--sm" aria-label="Mais opções"><span class="up-icon" data-icon="ellipsis"></span></button>
+      </div>
+      <p class="up-card__desc" style="margin:0">O conteúdo do card fica aqui: lista, indicadores ou formulário.</p>
+    </article>
+    <p class="ds-cap" style="margin:8px 0 0">Clicável · hover</p>
+    <a class="up-card up-card--interactive is-hover" href="#" style="display:flex;align-items:center;gap:12px">
+      <span class="up-tile"><span class="up-icon" data-icon="chart-bar"></span></span>
+      <span style="flex:1"><span class="up-card__title" style="display:block">Raio-X financeiro</span><span class="up-card__desc" style="display:block;margin:0">Foto do mês médio do seu negócio.</span></span>
+      <span class="up-tool__chev"><span class="up-icon" data-icon="chevron-right"></span></span>
+    </a>
+    <p class="ds-cap" style="margin:8px 0 0">Brilho · gradiente suave para destaque neutro</p>
+    <div class="up-card up-card--glow"><p class="up-card__title">Radar da Estrutura</p><p class="up-card__desc">Branco no topo, areia na base, com brilho interno.</p></div>
+    <p class="ds-cap" style="margin:8px 0 0">Ícone em ladrilho</p>
+    <div class="ds-row"><span class="up-tile"><span class="up-icon" data-icon="clipboard-check"></span></span><span class="up-tile up-tile--primary"><span class="up-icon" data-icon="arrow-up-right"></span></span><span class="up-tile up-tile--accent"><span class="up-icon" data-icon="package"></span></span><span class="up-tile up-tile--muted"><span class="up-icon" data-icon="lock"></span></span><span class="up-tile up-tile--inverse"><span class="up-icon" data-icon="chart-bar"></span></span><span class="up-tile up-tile--solid"><span class="up-icon" data-icon="home"></span></span><span class="up-tile up-tile--solid-accent"><span class="up-icon" data-icon="crown"></span></span><span class="up-tile up-tile--success"><span class="up-icon" data-icon="circle-check"></span></span><span class="up-tile up-tile--warning"><span class="up-icon" data-icon="triangle-alert"></span></span><span class="up-tile up-tile--danger"><span class="up-icon" data-icon="octagon-alert"></span></span><span class="up-tile up-tile--sm"><span class="up-icon" data-icon="calendar"></span></span><span class="up-tile up-tile--lg"><span class="up-icon" data-icon="home"></span></span><span class="up-tile up-tile--round"><span class="up-icon" data-icon="user"></span></span></div>
+  </section>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Header · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<section class="ds-sec">
+  <p class="ds-cap">Celular · Início</p>
+  <div style="width:390px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+    <header class="up-header" style="position:static">
+      <a class="up-header__brand" href="#" aria-label="Software UP, início"><img src="../../assets/logos/up-simbolo-preto.png" alt="UP"></a>
+      <div class="up-header__actions"><button class="up-icon-btn" aria-label="Minha conta"><span class="up-icon" data-icon="user"></span></button></div>
+    </header>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Celular · tela interna, com voltar</p>
+  <div style="width:390px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+    <header class="up-header" style="position:static;padding-left:var(--space-1)">
+      <button class="up-icon-btn" aria-label="Voltar"><span class="up-icon" data-icon="arrow-left"></span></button>
+      <span class="up-header__title">Raio-X financeiro</span>
+      <div class="up-header__actions"><button class="up-icon-btn" aria-label="Mais opções"><span class="up-icon" data-icon="ellipsis"></span></button></div>
+    </header>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Desktop · trilha de navegação e ações da página</p>
+  <div style="border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden">
+    <header class="up-header up-header--desktop" style="position:static">
+      <nav class="up-header__crumbs" aria-label="Trilha"><a href="#">Histórico</a><span class="up-icon" data-icon="chevron-right"></span><span aria-current="page">Comparação do Diagnóstico</span></nav>
+      <div class="up-header__actions"><button class="up-btn up-btn--md up-btn--secondary"><span class="up-icon" data-icon="refresh-cw"></span>Refazer diagnóstico</button></div>
+    </header>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Desktop · barra superior do painel</p>
+  <div style="border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden"><div class="up-topbar">
+  <span class="up-topbar__crumbs">Painel do aluno · <b>Início</b></span>
+  <div class="up-topbar__end"><a class="up-profile" href="#"><span class="up-avatar up-avatar--sm" aria-hidden="true">JS</span><span><span class="up-profile__name">João Silva</span><span class="up-profile__role">Aluno</span></span><span class="up-icon" data-icon="chevron-down"></span></a></div>
+</div></div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Saudação do Início</p>
+  <header>
+  <p class="up-greet__over">Bem-vindo ao seu painel</p>
+  <h1 class="up-greet__title">Olá, <em>João</em></h1>
+  <p class="up-greet__desc">Aqui você encontra as ferramentas da UP para ganhar clareza, organizar seu negócio e dar o próximo passo.</p>
+</header>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Cabeçalho de página</p>
+  <div class="up-pagehead">
+    <h1 class="up-pagehead__title">Raio-X financeiro</h1>
+    <p class="up-pagehead__desc">Coloque os números de um mês médio e veja quanto realmente sobra.</p>
+  </div>
+</section>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+[
+  {
+    "file": "fonts/Inter-Regular.woff",
+    "bytes": 49748,
+    "sha256": "a2e8fcd561e18cdb685ad3a4202019f8a7eddb94c7494a8bf382c2d240b67a41",
+    "source": "software-up-design-system (1).zip"
+  },
+  {
+    "file": "fonts/Inter-Medium.woff",
+    "bytes": 53176,
+    "sha256": "873701e00c7590aa5d2801cb69b4df2e894b4b5599f2725345684a8f9872aa53",
+    "source": "software-up-design-system (1).zip"
+  },
+  {
+    "file": "fonts/Inter-SemiBold.woff",
+    "bytes": 53284,
+    "sha256": "21a42d7b6ea75f7dcb38c471f9d02b9caa1f041f7f1d5f7ab6d4d51f1c6f0872",
+    "source": "software-up-design-system (1).zip"
+  },
+  {
+    "file": "fonts/InterDisplay-Regular.woff",
+    "bytes": 48312,
+    "sha256": "8a1fee2e73befc4df2afae7f89aaf3bc5212708b186720a9cbcd44800afa446d",
+    "source": "software-up-design-system (1).zip"
+  },
+  {
+    "file": "fonts/InterDisplay-Medium.woff",
+    "bytes": 51900,
+    "sha256": "8eb16d29513adf0884d26fc9e448bcc33a595054cc7432056eab0c681f69cdd0",
+    "source": "software-up-design-system (1).zip"
+  },
+  {
+    "file": "fonts/InterDisplay-SemiBold.woff",
+    "bytes": 52248,
+    "sha256": "7f88faa9dea5f841fe6943f06e0c807bf92c14f05acc3d86af7777c7ae7e8608",
+    "source": "software-up-design-system (1).zip"
+  }
+]

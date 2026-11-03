@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScoreDots · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.ds-row .up-dots{width:220px}
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <section class="up-card"><div class="up-card__head"><h3 class="up-card__title">Radar da Estrutura</h3><span class="up-score__nums"><span class="up-score__value">5,5</span><span class="up-score__delta">+1,0</span></span></div><ul class="up-scores"><li class="up-score"><span class="up-score__name">Vendas</span><span class="up-score__nums"><span class="up-score__value">7</span><span class="up-score__delta">+1</span></span><span class="up-dots" role="img" aria-label="Nota 7 de 10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></li><li class="up-score"><span class="up-score__name">Pessoas</span><span class="up-score__nums"><span class="up-score__value">6</span><span class="up-score__delta up-score__delta--zero">0</span></span><span class="up-dots" role="img" aria-label="Nota 6 de 10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></li><li class="up-score"><span class="up-score__name">Processos</span><span class="up-score__nums"><span class="up-score__value">5</span><span class="up-score__delta">+1</span></span><span class="up-dots" role="img" aria-label="Nota 5 de 10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></li><li class="up-score"><span class="up-score__name">Finanças <span class="up-badge up-badge--sm up-badge--accent">Gargalo</span></span><span class="up-score__nums"><span class="up-score__value">4</span><span class="up-score__delta">+2</span></span><span class="up-dots up-dots--low" role="img" aria-label="Nota 4 de 10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></li></ul></section>
+  <section class="ds-col">
+    <p class="ds-cap" style="margin:0">Partes</p>
+    <div class="up-card ds-col" style="gap:14px">
+      <div class="ds-row" style="gap:16px"><span class="up-dots" role="img" aria-label="Nota 7 de 10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="up-stat__meta">nota 7</span></div>
+      <div class="ds-row" style="gap:16px"><span class="up-dots up-dots--low" role="img" aria-label="Nota 4 de 10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="up-stat__meta">menor nota, com selo</span></div>
+      <div class="ds-row" style="gap:16px"><span class="up-score__delta">+2</span><span class="up-score__delta up-score__delta--zero">0</span><span class="up-score__delta up-score__delta--down">−1</span><span class="up-stat__meta">diferença para o diagnóstico inicial</span></div>
+    </div>
+  </section>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

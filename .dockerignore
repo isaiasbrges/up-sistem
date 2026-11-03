@@ -1,0 +1,14 @@
+.git
+node_modules
+data
+dev
+tests
+docs
+.env
+.env.*
+deployment/private
+deployment/backups
+app/preview.html
+app/preview-data.js
+*.log
+*.tar.gz

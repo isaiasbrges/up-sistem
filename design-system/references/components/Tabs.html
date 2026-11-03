@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tabs · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<section class="ds-sec">
+  <p class="ds-cap">Abas · seções de uma ferramenta</p>
+  <div class="up-tabs" role="tablist" aria-label="Raio-X automático">
+    <button class="up-tab" role="tab" aria-selected="false">Resumo do mês</button>
+    <button class="up-tab" role="tab" aria-selected="true">Lançamentos <span class="up-tab__count">42</span></button>
+    <button class="up-tab is-hover" role="tab" aria-selected="false">Contas a pagar <span class="up-tab__count">3</span></button>
+    <button class="up-tab" role="tab" aria-selected="false">Plano das dívidas</button>
+  </div>
+</section>
+<section class="ds-sec">
+  <p class="ds-cap">Segmentado · alternar vistas da mesma tela</p>
+  <div class="ds-row" style="gap:24px">
+    <div class="up-segmented" role="tablist" aria-label="Histórico">
+      <button class="up-segmented__item" role="tab" aria-selected="true">Diagnóstico</button>
+      <button class="up-segmented__item" role="tab" aria-selected="false">Raio-X</button>
+    </div>
+    <div class="up-segmented up-segmented--sm" role="tablist" aria-label="Período">
+      <button class="up-segmented__item" role="tab" aria-selected="false">Inicial</button>
+      <button class="up-segmented__item" role="tab" aria-selected="true">Atual</button>
+      <button class="up-segmented__item" role="tab" aria-selected="false">Comparar</button>
+    </div>
+  </div>
+</section>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

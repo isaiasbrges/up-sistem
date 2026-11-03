@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TextField · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <section class="ds-col">
+    <p class="ds-cap" style="margin:0">Login</p>
+    <div class="up-field">
+      <label class="up-label" for="tf-email">E-mail</label>
+      <div class="up-control up-control--lg"><input class="up-input" id="tf-email" type="email" inputmode="email" autocomplete="email" placeholder="voce@empresa.com.br" aria-describedby="tf-email-h"></div>
+      <p class="up-hint" id="tf-email-h">Use o mesmo e-mail da sua compra na Kiwify.</p>
+    </div>
+    <p class="ds-cap" style="margin:8px 0 0">Raio-X · valor em R$</p>
+    <div class="up-field">
+      <label class="up-label" for="tf-a1">Faturamento médio por mês</label>
+      <div class="up-control up-control--lg"><span class="up-affix">R$</span><input class="up-input up-input--num" id="tf-a1" inputmode="decimal" value="48.000,00"></div>
+      <label class="up-check up-check--sm"><input class="up-checkbox" type="checkbox">Estimativa, conferir depois</label>
+    </div>
+    <p class="ds-cap" style="margin:8px 0 0">Raio-X · R$ ou % do faturamento</p>
+    <div class="up-field">
+      <label class="up-label" for="tf-b1">Impostos sobre vendas</label>
+      <div class="up-control up-control--lg"><input class="up-input up-input--num" id="tf-b1" inputmode="decimal" value="6" aria-describedby="tf-b1-h"><span class="up-unit" role="group" aria-label="Unidade"><button class="up-unit__opt" type="button" aria-pressed="false">R$</button><button class="up-unit__opt" type="button" aria-pressed="true">%</button></span></div>
+      <p class="up-hint up-num" id="tf-b1-h">Equivale a R$ 2.880,00 por mês.</p>
+    </div>
+  </section>
+  <section class="ds-col">
+    <p class="ds-cap" style="margin:0">Estados · md</p>
+    <div class="up-field"><span class="up-label">Padrão</span><div class="up-control up-control--md"><input class="up-input" placeholder="Nome do credor" aria-label="Padrão"></div></div>
+    <div class="up-field"><span class="up-label">Hover</span><div class="up-control up-control--md is-hover"><input class="up-input" placeholder="Nome do credor" aria-label="Hover"></div></div>
+    <div class="up-field"><span class="up-label">Foco</span><div class="up-control up-control--md is-focus"><input class="up-input" value="Banco do Brasil" aria-label="Foco"></div></div>
+    <div class="up-field">
+      <label class="up-label" for="tf-err">Erro</label>
+      <div class="up-control up-control--md is-invalid"><input class="up-input" id="tf-err" value="joao@empresa" aria-invalid="true" aria-describedby="tf-err-h"></div>
+      <p class="up-hint up-hint--error" id="tf-err-h"><span class="up-icon" data-icon="octagon-alert"></span>Digite um e-mail completo, como joao@empresa.com.br.</p>
+    </div>
+    <div class="up-field"><span class="up-label">Desativado</span><div class="up-control up-control--md is-disabled"><input class="up-input" value="joao@empresa.com.br" disabled aria-label="Desativado"></div></div>
+    <div class="up-field"><span class="up-label">Somente leitura</span><div class="up-control up-control--md is-readonly"><span class="up-affix">R$</span><input class="up-input up-input--num" value="18.720,00" readonly aria-label="Somente leitura"></div><p class="up-hint">Calculado: soma dos custos de cada venda.</p></div>
+  </section>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

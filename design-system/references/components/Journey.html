@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journey · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-col">
+  <div style="max-width:360px"><p class="ds-cap">Vertical · coluna estreita e celular</p><section class="up-card up-card--glow" aria-labelledby="jn-t">
+  <div class="up-card__head"><h2 class="up-section__title" id="jn-t">Seu caminho na UP</h2></div>
+  <ol class="up-journey ">
+    <li class="up-journey__step is-done"><span class="up-journey__mark"><span class="up-icon" data-icon="check"></span></span><div><p class="up-journey__title">Diagnosticar</p><p class="up-journey__text">Refeito em 12/10/2026.</p></div></li>
+    <li class="up-journey__step is-done"><span class="up-journey__mark"><span class="up-icon" data-icon="check"></span></span><div><p class="up-journey__title">Entender os números</p><p class="up-journey__text">6 meses de Raio-X salvos.</p></div></li>
+    <li class="up-journey__step is-current"><span class="up-journey__mark" aria-hidden="true"></span><div><p class="up-journey__title">Acompanhar a evolução</p><p class="up-journey__text">Compare o inicial com o atual.</p></div></li>
+    <li class="up-journey__step is-locked"><span class="up-journey__mark"><span class="up-icon" data-icon="lock"></span></span><div><p class="up-journey__title">Aplicar com o Kit</p><p class="up-journey__text">Disponível no Kit UP de Implementação.</p></div></li>
+  </ol>
+</section></div>
+  <div><p class="ds-cap">Em linha · faixa de largura total, a partir de 768px</p><section class="up-card up-card--glow" aria-labelledby="jn-t">
+  <div class="up-card__head"><h2 class="up-section__title" id="jn-t">Seu caminho na UP</h2></div>
+  <ol class="up-journey up-journey--row">
+    <li class="up-journey__step is-done"><span class="up-journey__mark"><span class="up-icon" data-icon="check"></span></span><div><p class="up-journey__title">Diagnosticar</p><p class="up-journey__text">Refeito em 12/10/2026.</p></div></li>
+    <li class="up-journey__step is-done"><span class="up-journey__mark"><span class="up-icon" data-icon="check"></span></span><div><p class="up-journey__title">Entender os números</p><p class="up-journey__text">6 meses de Raio-X salvos.</p></div></li>
+    <li class="up-journey__step is-current"><span class="up-journey__mark" aria-hidden="true"></span><div><p class="up-journey__title">Acompanhar a evolução</p><p class="up-journey__text">Compare o inicial com o atual.</p></div></li>
+    <li class="up-journey__step is-locked"><span class="up-journey__mark"><span class="up-icon" data-icon="lock"></span></span><div><p class="up-journey__title">Aplicar com o Kit</p><p class="up-journey__text">Disponível no Kit UP de Implementação.</p></div></li>
+  </ol>
+</section></div>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alert · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div class="ds-grid2">
+  <section class="ds-col" style="gap:12px">
+    <p class="ds-cap" style="margin:0">Variantes</p>
+    <div class="up-alert up-alert--info" role="status"><span class="up-alert__icon"><span class="up-icon" data-icon="mail"></span></span><div class="up-alert__body"><p class="up-alert__title">Se este e-mail tiver uma compra, você vai receber um código em instantes.</p><p class="up-alert__text">Não chegou? Confira se é o mesmo e-mail usado na Kiwify, olhe o spam ou fale com o suporte.</p></div></div>
+    <div class="up-alert up-alert--success" role="status"><span class="up-alert__icon"><span class="up-icon" data-icon="circle-check"></span></span><div class="up-alert__body"><p class="up-alert__title">Raio-X de outubro salvo.</p><p class="up-alert__text">Você pode salvar um Raio-X por mês e acompanhar a evolução.</p></div><button class="up-icon-btn up-icon-btn--sm up-alert__close" aria-label="Fechar"><span class="up-icon" data-icon="x"></span></button></div>
+    <div class="up-alert up-alert--warning" role="status"><span class="up-alert__icon"><span class="up-icon" data-icon="triangle-alert"></span></span><div class="up-alert__body"><p class="up-alert__title">3 contas vencem nos próximos 7 dias.</p><div class="up-alert__actions"><a class="up-btn up-btn--link" href="#">Ver contas a pagar</a></div></div></div>
+    <div class="up-alert up-alert--danger" role="alert"><span class="up-alert__icon"><span class="up-icon" data-icon="octagon-alert"></span></span><div class="up-alert__body"><p class="up-alert__title">Não foi possível salvar.</p><p class="up-alert__text">Seus dados continuam na tela. Verifique a conexão e tente de novo.</p><div class="up-alert__actions"><button class="up-btn up-btn--link">Tentar de novo</button></div></div></div>
+  </section>
+  <section class="ds-col" style="gap:12px">
+    <p class="ds-cap" style="margin:0">Regra que muda o cálculo</p>
+    <div class="up-alert up-alert--warning"><span class="up-alert__icon"><span class="up-icon" data-icon="triangle-alert"></span></span><div class="up-alert__body"><p class="up-alert__title">Cada venda custa mais do que rende.</p><p class="up-alert__text">Revise preço e custos antes de vender mais. Por isso o ponto de equilíbrio não foi calculado.</p></div></div>
+    <p class="ds-cap" style="margin:12px 0 0">Neutro · acesso encerrado</p>
+    <div class="up-alert up-alert--neutral"><span class="up-alert__icon"><span class="up-icon" data-icon="lock"></span></span><div class="up-alert__body"><p class="up-alert__title">Seu acesso ao Kit UP foi encerrado.</p><p class="up-alert__text">Os dados que você preencheu continuam guardados.</p><div class="up-alert__actions"><a class="up-btn up-btn--link" href="#">Falar com o suporte</a></div></div></div>
+    <p class="ds-cap" style="margin:12px 0 0">Rodapés fixos e IA</p>
+    <div class="up-card up-card--compact ds-col" style="gap:12px">
+      <span class="up-ai-label"><span class="up-icon" data-icon="pen-line"></span>Escrito com apoio de IA</span>
+      <p class="up-footnote"><span class="up-icon" data-icon="info"></span><span>Esta ferramenta organiza informações para a sua decisão. Não é recomendação financeira e não substitui o seu contador.</span></p>
+      <p class="up-footnote"><span class="up-icon" data-icon="info"></span><span>Este diagnóstico é uma ferramenta de reflexão e organização. Não substitui orientação profissional contábil, jurídica ou de saúde.</span></p>
+    </div>
+  </section>
+</div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>

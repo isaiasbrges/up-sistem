@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<script src="../../components/color-mode.js"></script>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../components/up.css">
+<script src="../../components/up.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RingChart · Software UP</title>
+<style>
+body{padding:24px}
+.ds-sec+.ds-sec{margin-top:28px}
+.ds-cap{margin:0 0 10px;font-size:12px;line-height:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-row--top{align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.ds-state>small{font-size:12px;line-height:16px;color:var(--text-muted)}
+.ds-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.ds-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+
+</style>
+<link rel="stylesheet" href="../../components/material.css">
+<link rel="stylesheet" href="../preview.css">
+<script defer src="../preview.js"></script>
+</head>
+<body>
+
+<div style="max-width:520px"><section class="up-card up-card--fill" aria-labelledby="dg-t">
+  <div class="up-card__head"><h2 class="up-section__title" id="dg-t">Meu diagnóstico</h2><a class="up-btn up-btn--sm up-btn--secondary" href="#">Ver resultado<span class="up-icon" data-icon="arrow-right"></span></a></div>
+  <div class="up-ringrow"><div class="up-ring" style="--ring:152px" role="img" aria-label="Média do Radar: 5,5 de 10"><svg viewBox="0 0 152 152"><circle class="up-ring__track" cx="76.0" cy="76.0" r="69.0" stroke-width="14"/><circle class="up-ring__value" cx="76.0" cy="76.0" r="69.0" stroke-width="14" stroke-dasharray="238.4 433.5"/></svg><span class="up-ring__label"><span class="up-ring__num">5,5</span><span class="up-ring__cap">Média do Radar</span></span></div><ul class="up-arealist"><li><span class="up-tile up-tile--primary"><span class="up-icon" data-icon="trending-up"></span></span><span>Vendas</span><span class="up-arealist__val">7<small>/10</small></span></li><li><span class="up-tile up-tile--primary"><span class="up-icon" data-icon="users"></span></span><span>Pessoas</span><span class="up-arealist__val">6<small>/10</small></span></li><li><span class="up-tile up-tile--primary"><span class="up-icon" data-icon="sliders-horizontal"></span></span><span>Processos</span><span class="up-arealist__val">5<small>/10</small></span></li><li><span class="up-tile up-tile--accent"><span class="up-icon" data-icon="wallet"></span></span><span>Finanças <span class="up-badge up-badge--sm up-badge--accent">Gargalo</span></span><span class="up-arealist__val">4<small>/10</small></span></li></ul></div>
+  <div class="up-card__foot"><span class="up-stat__meta">Roda da Plenitude 6,1 · cuidado: Saúde e energia</span><span class="up-score__delta">+1,0 no Radar</span></div>
+</section></div>
+<script>window.UP && window.UP.hydrate();</script>
+</body>
+</html>
