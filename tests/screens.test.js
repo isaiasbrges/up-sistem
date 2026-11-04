@@ -13,4 +13,17 @@ state.entitlements.kit=true;
 for(const route of ['ledger','scripts','offers','plan','procedures'])assert.ok(routes[route]().length>1600,route);
 state.diagnostics.push({id:1,created:'2026-10-26',result:{mediaRadar:5.5,mediaRoda:6,cuidados:['Família'],gargalo:'Finanças',roda:Object.fromEntries(['Comunhão com Deus','Família','Saúde e energia','Propósito e clareza','Finanças pessoais','Negócio','Relacionamentos','Contribuição e serviço'].map(n=>[n,{score:6}])),radar:Object.fromEntries(['Vendas','Pessoas','Processos','Finanças'].map(n=>[n,{score:5}]))}});
 assert.match(routes['diagnostic-result'](),/Média Radar/);
+// Telas do aluno sem anotações internas da equipe.
+for(const route of ['scripts','plan'])assert.doesNotMatch(routes[route](),/Bring|aula F\.1|transacional|provisóri/,route);
+// Selo da Roda acompanha a média registrada.
+assert.match(routes['diagnostic-result'](),/Pede atenção/);
+assert.doesNotMatch(routes['diagnostic-result'](),/Vida em equilíbrio/);
+// Quem já tem o Kit Completo não recebe a oferta dele.
+assert.doesNotMatch(routes['kit-essential'](),/Explorar Kit Completo/);
+const {render}=context.window.__test;
+render();assert.doesNotMatch(html,/sidebar-promo/);
+state.entitlements.kit=false;state.entitlements.essencial=true;
+assert.match(routes['kit-essential'](),/Explorar Kit Completo/);
+render();assert.match(html,/sidebar-promo/);
+state.entitlements.kit=true;
 console.log('PASS: '+Object.keys(routes).length+' rotas, cinco ferramentas do Kit, resultado do Diagnóstico.');
