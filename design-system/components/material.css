@@ -20,7 +20,7 @@ body { background-color:var(--bg-canvas); }
 :root .radar-point.attention { fill:var(--chart-highlight); }
 :root .app-body { background-color:var(--bg-canvas); background-image:radial-gradient(ellipse at 12% 0%,rgba(123,141,164,.13),transparent 50%),radial-gradient(ellipse at 100% 65%,rgba(123,141,164,.08),transparent 48%); }
 :root .auth-right { background:radial-gradient(ellipse at 100% 0%,rgba(123,141,164,.10),transparent 65%); }
-:root .sidebar-promo::after,:root .overview-focus::after { border-color:rgba(245,196,0,.10); }
+:root .sidebar-promo::after,:root .overview-focus::after { border-color:rgba(0,49,232,.23); }
 :root :is(.panel,.kpi,.financial-kpi,.overview-metric,.topbar,.mobile-top,.bottom-nav,.auth-card,.up-card,.up-product,.up-topbar,.up-header,.up-plan) { background:var(--surface); border-color:var(--border-subtle); box-shadow:var(--glass-shadow); }
 :root .overview-metric.featured { background:var(--primary); }
 @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
@@ -36,5 +36,5 @@ body { background-color:var(--bg-canvas); }
 }
 @media print {
  :root :is(.panel,.kpi,.financial-kpi,.overview-metric,.auth-card,.up-card,.up-product,.up-plan) { background:#fff; color:#181b22; box-shadow:none; backdrop-filter:none; -webkit-backdrop-filter:none; border-color:#ccd3dd; }
- :root .overview-metric.featured .metric-meta { color:#493a0c; }
+ :root .overview-metric.featured .metric-meta { color:#364256; }
 }

@@ -1,6 +1,6 @@
 # Software UP
 
-Aplicação de Diagnóstico, Raio-X financeiro e ferramentas dos Kits, com paleta amarela, neutros frios, menu escuro e superfícies glass, conforme a atualização de design. A primeira versão usa cálculos decimais, regras e modelos editáveis, conforme decisão de funcionar sem IA.
+Aplicação de Diagnóstico, Raio-X financeiro e ferramentas dos Kits, com paleta azul e laranja, neutros frios, menu escuro e superfícies glass, conforme a atualização de design. A primeira versão usa cálculos decimais, regras e modelos editáveis, conforme decisão de funcionar sem IA.
 
 **Em preparação para publicação.** A nova API PostgreSQL funciona no ambiente local e tem testes de integração. O comando `npm start` usa a nova API PostgreSQL, com configurações privadas e encerramento gracioso. A publicação real e as integrações externas ainda dependem de validação. O [acompanhamento](docs/implementation-progress.md) registra o que falta e as evidências atuais.
 

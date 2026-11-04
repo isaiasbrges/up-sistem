@@ -36,3 +36,13 @@ O inventário completo está em [source-inventory.json](source-inventory.json), 
 - Capturas da aplicação: `up-yellow-glass-light.jpg` e `up-yellow-glass-dark.jpg`, na pasta de visualizações deste trabalho.
 
 A pasta `design-system-export` foi removida em 30/10/2026, somente após a validação. Antes da remoção, o caminho absoluto foi confirmado como filho direto deste projeto, sem links de sistema de arquivos, e os 88 nomes e hashes foram comparados novamente com o inventário. Nenhum arquivo novo ou modificado foi encontrado na origem. O lint foi executado novamente sem a pasta original e passou. O backup local anterior está preservado em `data/design-system-migration/before-yellow.zip` (ignorado pelo Git).
+
+## Retorno ao azul — 04/11/2026
+
+A pedido do usuário, a paleta voltou ao azul `#0031E8` e ao laranja `#FF8D00` usados até 30/10. O material glass, o menu escuro, os temas claro/escuro, os nomes de tokens e as classes foram mantidos; mudaram só os valores.
+
+- `tokens.json`: `brand-blue` e `brand-orange` voltam a ser canônicos; as escalas `blue-*` e `orange-*` retomam os valores anteriores à troca. `brand-yellow` e `brand-gold` foram removidos.
+- Ajustes para passar no lint: `accent-active` #D97000 (texto escuro 5,8:1), `chart-highlight` #D46A00 (3,6:1 sobre branco) e, no modo escuro, `primary-text`/`focus-ring` #8CA4FF, `chart-primary` #6F8DFF, `chart-highlight` #FFA640 e `on-danger` escuro.
+- `.design-system-lint.json`: o lint passa a bloquear os valores da paleta amarela (#F5C400, #E5B82E, #785900, #A47B00, #F6D76E). O amarelo semântico do semáforo continua permitido.
+- Valores fixos fora dos tokens: forma decorativa do menu/foco em `material.css`, texto de impressão do card de destaque e série de gráfico do modo de impressão em `color-mode.css`.
+- Validação: `npm run lint:design` com os 34 pares de contraste aprovados nos dois temas; telas conferidas no navegador em claro, escuro e celular.
