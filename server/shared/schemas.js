@@ -28,14 +28,18 @@ const count=z.union([z.string(),z.number()]).transform((v,ctx)=>{
 });
 const date=z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine(v=>{const d=new Date(v+'T00:00:00Z');return !Number.isNaN(d.getTime())&&d.toISOString().slice(0,10)===v;},'Informe uma data válida.');
 const month=z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/);
-const score=z.strictObject({score:z.number().int().min(0).max(10),evidence:optionalText(2000)});
+// score:null = "não se aplica" (N). Fica fora das médias e não pode ser o gargalo.
+const score=z.strictObject({score:z.number().int().min(0).max(10).nullable(),evidence:optionalText(2000)});
 const scores=names=>z.strictObject(Object.fromEntries(names.map(k=>[k,score])));
 const profile=z.strictObject({business:optionalText(80),age:optionalText(80),band:optionalText(80),team:count.default(0)});
 const diagnostic=z.strictObject({
   roda:scores(RODA),radar:scores(RADAR),gargalo:z.enum(RADAR),
   dificuldade:optionalText(150),dificuldadeTexto:optionalText(3000),perfil:profile.default({business:'',age:'',band:'',team:0})
 }).superRefine((value,ctx)=>{
-  const low=Math.min(...RADAR.map(k=>value.radar[k].score));
+  if (!RODA.some(k=>value.roda[k].score!==null)) ctx.addIssue({code:'custom',path:['roda'],message:'Dê nota a pelo menos uma dimensão da Roda.'});
+  const applicable=RADAR.filter(k=>value.radar[k].score!==null);
+  if (!applicable.length) {ctx.addIssue({code:'custom',path:['radar'],message:'Dê nota a pelo menos uma área do Radar.'});return;}
+  const low=Math.min(...applicable.map(k=>value.radar[k].score));
   if (value.radar[value.gargalo].score!==low) ctx.addIssue({code:'custom',path:['gargalo'],message:'Escolha o gargalo entre as áreas com menor nota.'});
 });
 const debt=z.strictObject({id:text(100).optional(),creditor:text(250).min(1),scope:z.enum(['empresa','pessoal']),balance:formMoney,payment:formMoney,rate,overdue:z.boolean().default(false)});
@@ -59,7 +63,7 @@ const offer=z.strictObject({name:text(200).min(1),type:optionalText(80),audience
 const plan=z.strictObject(Object.fromEntries([...['result','decision1','decision2','decision3','decision4','phase1','phase2','phase3'].map(k=>[k,optionalText(5000)]),['reminder',z.enum(DAYS).default('segunda-feira')]]));
 const checkin=z.strictObject({answers:z.array(text(5000)).length(5).refine(v=>v.some(x=>x.length>0),'Preencha ao menos uma resposta.')});
 const procedure=z.strictObject({task:text(250).min(1),owner:text(150).min(1),goal:optionalText(5000),deadline:optionalText(250),steps:optionalText(15000),standard:optionalText(5000),fallback:optionalText(5000)});
-const scoreDraft=z.strictObject({score:z.number().int().min(0).max(10).optional(),evidence:optionalText(2000)});
+const scoreDraft=z.strictObject({score:z.number().int().min(0).max(10).nullable().optional(),evidence:optionalText(2000)});
 const partialScores=names=>z.strictObject(Object.fromEntries(names.map(key=>[key,scoreDraft.optional()]))).default({});
 const diagnosticDraft=z.strictObject({roda:partialScores(RODA),radar:partialScores(RADAR),gargalo:z.enum([...RADAR,'']).default(''),dificuldade:optionalText(150),dificuldadeTexto:optionalText(3000),perfil:profile.partial().default({})});
 const financeDraft=finance.safeExtend({month:month.optional(),estimated:z.boolean().optional()});

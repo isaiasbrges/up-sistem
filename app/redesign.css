@@ -390,3 +390,7 @@
 
 /* Check-in semanal: botão na linha inteira, sem esticar até a altura da caixa ao lado. */
 #checkin-form .checkin-submit{grid-column:1/-1;justify-self:start;align-self:start}
+
+/* Diagnóstico: opção N (não se aplica) distinta das notas. */
+.rating-btn.rating-na:not(.on){border-style:dashed;font-weight:600}
+.radar-score.radar-na{fill:var(--text-muted);font-weight:500}

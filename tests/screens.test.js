@@ -20,6 +20,10 @@ assert.match(routes['diagnostic-result'](),/Pede atenção/);
 assert.doesNotMatch(routes['diagnostic-result'](),/Vida em equilíbrio/);
 // Quem já tem o Kit Completo não recebe a oferta dele.
 assert.doesNotMatch(routes['kit-essential'](),/Explorar Kit Completo/);
+// Diagnóstico: opção N (não se aplica) nas perguntas e N/A nos resultados.
+assert.match(routes.diagnostic(),/data-score-value="na"/);
+state.diagnostics.at(-1).result.roda['Família']={score:null};state.diagnostics.at(-1).result.radar['Pessoas']={score:null};
+assert.match(routes['diagnostic-result'](),/N\/A/);
 const {render}=context.window.__test;
 render();assert.doesNotMatch(html,/sidebar-promo/);
 state.entitlements.kit=false;state.entitlements.essencial=true;
