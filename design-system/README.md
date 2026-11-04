@@ -1,6 +1,6 @@
 # Design system do UP
 
-Paleta amarela e material glass, integrados aos temas claro/escuro do aplicativo.
+Paleta azul e laranja com material glass, integrada aos temas claro/escuro do aplicativo.
 
 - [Diretrizes DESIGN.md](DESIGN.md)
 - [Catálogo visual independente](index.html)

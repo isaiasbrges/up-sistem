@@ -21,7 +21,7 @@ A logo UP original, em duas formas: a assinatura completa (símbolo + "Universo 
 - **Cores:** só os arquivos fornecidos, branco sobre `surface-inverse` e preto sobre `bg-canvas` ou `surface`.
 - **Área de proteção:** a altura da seta ↗ do símbolo, livre em todos os lados.
 
-**Não faça:** recolorir de amarelo de ação ou dourado; aplicar sombra, contorno ou efeito; distorcer; colocar sobre foto; recriar a logo em texto.
+**Não faça:** recolorir de azul de ação ou laranja; aplicar sombra, contorno ou efeito; distorcer; colocar sobre foto; recriar a logo em texto.
 
 ## Icons
 
@@ -74,12 +74,12 @@ Exemplo: `design-system/references/components/Button.html`
 O botão dispara uma ação. Todo botão é uma pílula (`radius-full`), e cada tela tem no máximo um primário.
 
 **Variantes**
-- `up-btn--primary` (amarelo de ação): a ação para a qual a tela existe. Uma por tela.
+- `up-btn--primary` (azul de ação): a ação para a qual a tela existe. Uma por tela.
 - `up-btn--dark` (preto): ação forte de apoio ao lado do primário ou dentro do card de destaque ("Novo mês"), e o botão do Kit na sidebar.
-- `up-btn--white` (branco com sombra leve): só sobre fundos coloridos, como o card de destaque amarelo de ação ("Ver Raio-X").
+- `up-btn--white` (branco com sombra leve): só sobre fundos coloridos, como o card de destaque azul de ação ("Ver Raio-X").
 - `up-btn--secondary`: ações de mesmo nível sobre fundo claro ("Ver resultado", "Exportar CSV").
 - `up-btn--ghost`: ações de apoio ("Cancelar", "Refazer", "Voltar").
-- `up-btn--accent` (dourado): só para a compra do Kit, no banner do plano (Início) e na página do Kit.
+- `up-btn--accent` (laranja): só para a compra do Kit, no banner do plano (Início) e na página do Kit.
 - `up-btn--danger`: só no admin, para ações destrutivas, sempre com confirmação.
 - `up-btn--link`: ação em linha com o texto ("Reenviar código").
 
@@ -95,7 +95,7 @@ O botão dispara uma ação. Todo botão é uma pílula (`radius-full`), e cada 
 <a class="up-btn up-btn--dark" href="/raio-x/novo">Novo mês <span class="up-icon" data-icon="plus"></span></a>
 ```
 
-**Não faça:** dois primários lado a lado; botão branco sobre fundo claro; botão dourado fora da compra do Kit; botão retangular.
+**Não faça:** dois primários lado a lado; botão branco sobre fundo claro; botão laranja fora da compra do Kit; botão retangular.
 
 ## IconButton
 
@@ -103,7 +103,7 @@ Exemplo: `design-system/references/components/IconButton.html`
 
 Botão só com ícone, em círculo, para ações óbvias e repetidas em pouco espaço: voltar, fechar, mais opções, adicionar, sair.
 
-**Variantes:** fantasma (padrão); `--secondary` (círculo com o gradiente suave e brilho, o mais usado em cards); `--primary` (amarelo de ação, adicionar item); `--dark` (preto); `--white` (sobre o card de destaque); `--inverse` (sobre fundo preto, na sidebar do admin).
+**Variantes:** fantasma (padrão); `--secondary` (círculo com o gradiente suave e brilho, o mais usado em cards); `--primary` (azul de ação, adicionar item); `--dark` (preto); `--white` (sobre o card de destaque); `--inverse` (sobre fundo preto, na sidebar do admin).
 
 **Tamanhos:** 48px no celular e 40px no desktop. Também há `--sm` (32), `--md` e `--lg`. A área de toque nunca fica abaixo de 44px no celular.
 
@@ -285,25 +285,25 @@ Banner que diz ao aluno o que ele tem liberado e qual é o próximo produto. Use
 
 **Estados, que vêm do acesso real (tabela de acessos):**
 - **Só o produto principal:** "Diagnóstico e Raio-X liberados", com coroa em `up-tile--accent` e botão `up-btn--accent` "Conhecer o Kit", que leva ao link de compra configurado no admin.
-- **Kit Essencial:** "Kit Essencial ativo", com o que falta (itens 3 a 5) e o mesmo botão dourado.
+- **Kit Essencial:** "Kit Essencial ativo", com o que falta (itens 3 a 5) e o mesmo botão laranja.
 - **Kit UP de Implementação:** "Você está no Kit UP de Implementação", com coroa em `up-tile--solid-accent` e botão secundário "Abrir o Kit". Sem venda.
 - **Acesso encerrado** (reembolso, chargeback ou revogação): ícone `lock` neutro, "os dados continuam guardados" e "Falar com o suporte".
 
 **Anatomia:** `up-plan` (gradiente suave) > `up-tile` redondo de 56px + `up-plan__title` + `up-plan__text` + um botão. No celular, o botão ocupa a largura toda embaixo.
 
-**Regras:** o botão dourado deste banner é o único botão de destaque permitido fora da página do Kit. Nunca mostre preço que não venha do admin.
+**Regras:** o botão laranja deste banner é o único botão de destaque permitido fora da página do Kit. Nunca mostre preço que não venha do admin.
 
 ## HeroCard
 
 Exemplo: `design-system/references/components/HeroCard.html`
 
-Card de destaque em amarelo de ação (`surface-hero`) com o número mais importante da tela e as duas ações que levam adiante. Use um por tela.
+Card de destaque em azul de ação (`surface-hero`) com o número mais importante da tela e as duas ações que levam adiante. Use um por tela.
 
 **Anatomia:** rótulo (`up-hero__label`), valor em `figure-xl`, contexto e selo do semáforo, e até duas ações (`up-btn--white` e `up-btn--dark`). Ao fundo ficam as formas da marca, tom sobre tom (`hero-shape`, `hero-shape-strong`): um bloco chanfrado a 45° e a seta ↗ do símbolo UP.
 
 **Variantes:**
 - **Horizontal:** ações lado a lado, para colunas de 4 ou mais.
-- **Empilhada (`up-hero--stack`):** para colunas de 3. As ações ficam uma sobre a outra, e a mini evolução dos últimos 6 meses (`up-hero__spark`) aparece com barras brancas para os meses positivos e dourado para os negativos.
+- **Empilhada (`up-hero--stack`):** para colunas de 3. As ações ficam uma sobre a outra, e a mini evolução dos últimos 6 meses (`up-hero__spark`) aparece com barras brancas para os meses positivos e laranja para os negativos.
 
 **Onde usar:** no Início e no resultado do Raio-X, com a sobra após dívidas; no resultado do Diagnóstico, com o gargalo. Sem Raio-X salvo, vira o convite "Faça seu primeiro Raio-X".
 
@@ -344,7 +344,7 @@ Exemplo: `design-system/references/components/NextSteps.html`
 
 Os próximos passos do aluno, em ordem, cada um levando à tela onde ele age. No Início, é a versão compacta das ações do Raio-X mais a recomendação do gargalo.
 
-**Item (`up-steps__item`):** número em quadrado macio, título curto no imperativo, uma linha de contexto com o dado que gerou o passo e uma seta. O primeiro passo (`is-next`) tem o número em amarelo de ação.
+**Item (`up-steps__item`):** número em quadrado macio, título curto no imperativo, uma linha de contexto com o dado que gerou o passo e uma seta. O primeiro passo (`is-next`) tem o número em azul de ação.
 
 **Fonte dos passos:** as ações do Raio-X na ordem de prioridade da especificação (no máximo duas) e a recomendação fixa do gargalo ("Finanças: Módulo 2, aula 2.2"). As aulas ficam na Kiwify: o passo da aula é só texto e não abre conteúdo dentro do Software UP.
 
@@ -369,7 +369,7 @@ Selo curto de status, em pílula e sempre com palavra. Ícone e cor reforçam a 
 - **Andamento:** "Concluído", "Em andamento" (`--info`), "Não iniciado", "Inicial" e "Refeito" (`--outline`) e "Estimativa" (`--warning`).
 - **Acesso:** "Ativo", "Bloqueado" (com `lock`), "Reembolsado", "Chargeback" e "Revogado". "Kit UP" usa `--accent`.
 - **Destaque de nota:** "Gargalo" e "Cuidado" em `--accent --sm`, ao lado da menor nota.
-- **Sobre o amarelo de ação:** `--on-hero`, para datas e períodos dentro do card de destaque.
+- **Sobre o azul de ação:** `--on-hero`, para datas e períodos dentro do card de destaque.
 - **Rótulo de IA (`up-ai-label`)** e **ponto (`up-dot`)**, só em legendas.
 
 **Tamanhos:** 26px (padrão) e `--sm` com 22px, dentro de indicadores e listas.
@@ -382,7 +382,7 @@ Exemplo: `design-system/references/components/RingChart.html`
 
 Anel com uma média de 0 a 10 e, ao lado, as notas que formam essa média. No Início, mostra a média do Radar da Estrutura e as quatro áreas.
 
-**Anatomia:** `up-ringrow` > `up-ring` (SVG: trilho em `chart-track` e arco em `chart-primary`, com 14px de espessura e ponta arredondada) + `up-arealist`, com ícone, nome e nota "/10" de cada área. A área de menor nota recebe ícone dourado e o selo "Gargalo". O rodapé traz a média da Roda e a dimensão de cuidado.
+**Anatomia:** `up-ringrow` > `up-ring` (SVG: trilho em `chart-track` e arco em `chart-primary`, com 14px de espessura e ponta arredondada) + `up-arealist`, com ícone, nome e nota "/10" de cada área. A área de menor nota recebe ícone laranja e o selo "Gargalo". O rodapé traz a média da Roda e a dimensão de cuidado.
 
 **Regras:** o anel mostra sempre uma média real com uma casa decimal, nunca porcentagem de progresso ou de conclusão (não há gamificação no Software UP). O anel tem `role="img"` e `aria-label` ("Média do Radar: 5,5 de 10"). Em telas abaixo de 480px, o anel fica acima da lista. O tamanho é definido por `--ring` (152px no Início).
 
@@ -408,7 +408,7 @@ Exemplo: `design-system/references/components/BarChart.html`
 
 Gráfico de barras com eixo zero, para a evolução mês a mês do Raio-X (um Raio-X salvo por mês).
 
-**Forma:** uma barra por mês, saindo de uma linha de base. Positivo sobe em `chart-primary` (amarelo de ação, "Sobrou") e negativo desce em `chart-highlight` (dourado, "Faltou"). As barras têm até 24px de largura, com ponta arredondada (`radius-xs`) só do lado do valor. A grade é de 1px em `chart-grid`, e o zero fica mais forte (`border-control`). Os rótulos do eixo são compactos ("1 mil", "−2 mil").
+**Forma:** uma barra por mês, saindo de uma linha de base. Positivo sobe em `chart-primary` (azul de ação, "Sobrou") e negativo desce em `chart-highlight` (laranja, "Faltou"). As barras têm até 24px de largura, com ponta arredondada (`radius-xs`) só do lado do valor. A grade é de 1px em `chart-grid`, e o zero fica mais forte (`border-control`). Os rótulos do eixo são compactos ("1 mil", "−2 mil").
 
 **Rótulos:** a legenda fica no cabeçalho do card. O mês atual fica em negrito no eixo e ganha um balão (`up-chart__tip`) com o valor. Os outros valores aparecem no hover (`title` em cada coluna) e numa tabela para leitores de tela (`up-sr-only`). Nunca coloque número em todas as barras.
 
@@ -493,13 +493,13 @@ Exemplo: `design-system/references/components/ProductCard.html`
 
 Atalho para uma área do aluno, com ícone, nome, uma linha de descrição e o estado. Fica numa fileira de quatro no Início (`up-products`).
 
-**Itens do Início:** Diagnóstico UP (`clipboard-check`, amarelo de ação), Raio-X financeiro (`chart-bar`, dourado), Histórico (`history`, amarelo de ação) e Kit UP de Implementação (`crown`, dourado).
+**Itens do Início:** Diagnóstico UP (`clipboard-check`, azul de ação), Raio-X financeiro (`chart-bar`, laranja), Histórico (`history`, azul de ação) e Kit UP de Implementação (`crown`, laranja).
 
 **Estados:**
 - **Liberado:** selo com o estado real ("Refeito", "6 meses salvos", "3 registros").
 - **Bloqueado (`is-locked`):** fundo `surface-subtle`, título em `text-secondary` e selo "Bloqueado" com cadeado. Continua clicável e leva à página do Kit, onde aparece a oferta.
 
-**Comportamento:** o card inteiro é um link. No hover, ganha `shadow-md` e a seta no canto vira um círculo amarelo de ação (dourado, se estiver bloqueado).
+**Comportamento:** o card inteiro é um link. No hover, ganha `shadow-md` e a seta no canto vira um círculo azul de ação (laranja, se estiver bloqueado).
 
 **Responsivo:** quatro por linha a partir de 1280px, dois no tablet, e dois compactos no celular (só ícone, nome e selo, sem descrição).
 
@@ -517,7 +517,7 @@ Exemplo: `design-system/references/components/Journey.html`
 
 As quatro etapas do método UP com o estado real do aluno: diagnosticar, entender os números, acompanhar a evolução e aplicar com o Kit.
 
-**Estados de cada etapa:** `is-done` (círculo amarelo de ação com check, linha amarelo de ação até a próxima); `is-current` (anel amarelo de ação, a etapa em que o aluno está); pendente (anel cinza); e `is-locked` (cadeado, quando a etapa depende do Kit).
+**Estados de cada etapa:** `is-done` (círculo azul de ação com check, linha azul de ação até a próxima); `is-current` (anel azul de ação, a etapa em que o aluno está); pendente (anel cinza); e `is-locked` (cadeado, quando a etapa depende do Kit).
 
 **Regras para calcular as etapas:**
 - **Diagnosticar:** feita quando existe um diagnóstico.

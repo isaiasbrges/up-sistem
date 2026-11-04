@@ -3,7 +3,7 @@
   "generatedCss": "design-system/tokens.css",
   "references": "design-system/references",
   "scan": ["app", "design-system/components", "design-system/references"],
-  "forbiddenBrandColors": ["#0031e8", "#ff8d00", "#1948f5"],
+  "forbiddenBrandColors": ["#f5c400", "#e5b82e", "#785900", "#a47b00", "#f6d76e"],
   "minimumTextContrast": 4.5,
   "minimumGraphicContrast": 3
 }
