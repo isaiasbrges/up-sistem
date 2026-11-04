@@ -15,6 +15,11 @@ assert.match(routes.dashboard(),/Fazer meu diagnóstico/);
 assert.doesNotMatch(routes.dashboard(),/Evolução financeira/);
 state.entitlements.kit=true;
 for(const route of ['ledger','scripts','offers','plan','procedures'])assert.ok(routes[route]().length>1600,route);
+// Formulários longos em etapas, com exemplos nos campos.
+for(const [route,n] of [['plan',3],['offers',3],['procedures',2]]){const out=routes[route]();assert.equal((out.match(/class="form-step"/g)||[]).length,n,route);assert.match(out,/data-step-next/,route);assert.match(out,/placeholder="Ex\.:/,route);}
+// Quem tem o Kit Completo vê "Ferramentas"; o Raio-X automático se chama Controle do mês.
+assert.match(routes.ledger(),/Controle do mês/);
+assert.match(routes.kit(),/Ferramentas/);
 state.diagnostics.push({id:1,created:'2026-10-26',result:{mediaRadar:5.5,mediaRoda:6,cuidados:['Família'],gargalo:'Finanças',roda:Object.fromEntries(['Comunhão com Deus','Família','Saúde e energia','Propósito e clareza','Finanças pessoais','Negócio','Relacionamentos','Contribuição e serviço'].map(n=>[n,{score:6}])),radar:Object.fromEntries(['Vendas','Pessoas','Processos','Finanças'].map(n=>[n,{score:5}]))}});
 assert.match(routes['diagnostic-result'](),/Média Radar/);
 // Com diagnóstico e sem Raio-X, o próximo passo é o Raio-X; com Raio-X, volta o painel completo.
@@ -39,6 +44,7 @@ state.diagnostics.at(-1).result.roda['Família']={score:null};state.diagnostics.
 assert.match(routes['diagnostic-result'](),/N\/A/);
 const {render}=context.window.__test;
 render();assert.doesNotMatch(html,/sidebar-promo/);
+assert.match(html,/nav-label">Ferramentas</);assert.doesNotMatch(html,/nav-label">Kit Essencial</);assert.doesNotMatch(html,/search-key">↓/);
 state.entitlements.kit=false;state.entitlements.essencial=true;
 assert.match(routes['kit-essential'](),/Explorar Kit Completo/);
 render();assert.match(html,/sidebar-promo/);

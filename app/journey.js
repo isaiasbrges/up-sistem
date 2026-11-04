@@ -19,7 +19,7 @@
   const definitions=[
    ['diagnostic',front,'Seu ponto de partida','Conclua e salve seu primeiro Diagnóstico UP.','diagnostic','diagnostic-result','clipboard-check',100,diagnostics.length>0,'Primeiro olhar'],
    ['finance',front,'Clareza nos números','Conclua as seis etapas e salve seu Raio-X financeiro.','finance','finance-result','chart-bar',120,finances.length>0,'Números na mesa'],
-   ['ledger',essential,'Organização em prática','Salve uma entrada ou saída no Raio-X automático.','ledger','ledger','wallet',60,rows(state.kitTransactions).some(x=>x.id&&Number(x.value)>0),'Caixa organizado'],
+   ['ledger',essential,'Organização em prática','Salve uma entrada ou saída no Controle do mês.','ledger','ledger','wallet',60,rows(state.kitTransactions).some(x=>x.id&&Number(x.value)>0),'Caixa organizado'],
    ['bills',essential,'Antecipe os compromissos','Cadastre uma conta com descrição, valor e vencimento.','ledger','ledger','calendar',40,rows(state.kitBills).some(x=>x.id&&text(x.desc)&&x.due&&Number(x.value)>0),'Olhar adiante'],
    ['plan',kit,'Uma direção para 90 dias','Salve o resultado desejado, as quatro decisões e as três fases.','plan','plan','file-text',100,planKeys.every(k=>text(plan[k])),'Rota definida'],
    ['checkin',kit,'Da intenção à revisão','Salve um check-in com seus avanços e a próxima prioridade.','plan','plan','check',60,checkins.length>0,'Primeira revisão'],

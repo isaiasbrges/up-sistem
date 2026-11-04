@@ -66,6 +66,8 @@
   event.target.setAttribute('aria-expanded',String(!!query));
  });
  document.addEventListener('keydown',event=>{
+  // Atalho "/" leva à busca, exceto quando a pessoa já está digitando.
+  if(event.key==='/'&&!event.ctrlKey&&!event.metaKey&&!event.altKey&&!event.target.closest?.('input,textarea,select,[contenteditable]')){const search=document.querySelector('[data-tool-search]');if(search&&search.getClientRects().length){event.preventDefault();search.focus();return;}}
   if(event.key==='Escape'){closePopovers();if(mobileOpen)closeMobile();document.querySelector('[data-tool-search]')?.setAttribute('aria-expanded','false');}
   if(event.target.matches('[data-tool-search]')&&event.key==='ArrowDown'){
    const first=document.querySelector('#tool-search-results button:not([hidden])');

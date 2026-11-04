@@ -457,3 +457,40 @@
 }
 @media (prefers-reduced-motion:reduce) { .start-number-ghost { animation: none; } }
 @media print { .start-hero { background: #fff; color: #000; border: 1px solid #ccc; } .start-hero::after { display: none; } }
+
+/* Formulários longos em etapas (Plano de 90 Dias, Ofertas modelo, Kit de transferência). */
+.form-stepper { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; padding: 0; list-style: none; }
+.form-stepper li { flex: 1; min-width: 0; }
+.form-stepper button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 8px 12px 8px 8px; border: 1px solid var(--border-subtle); border-radius: 12px; background: var(--surface); color: var(--text-secondary); font-size: 13px; font-weight: 500; text-align: left; cursor: pointer; }
+.form-stepper button:hover { border-color: var(--primary-border); }
+.form-stepper-number { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--surface-muted); color: var(--text-secondary); font-size: 12px; font-weight: 600; }
+.form-stepper .current { border-color: var(--primary); background: var(--primary-subtle); color: var(--text-primary); }
+.form-stepper .current .form-stepper-number { background: var(--primary); color: var(--on-primary); }
+.form-stepper .done .form-stepper-number { background: var(--success-subtle); color: var(--success-text); }
+.form-step { min-width: 0; margin: 0; padding: 0; border: 0; }
+.form-step-nav { margin-top: 20px; }
+@media (max-width:760px) {
+  .form-stepper { gap: 6px; }
+  .form-stepper button { justify-content: center; padding: 6px; }
+  .form-stepper li:not(:has(.current)) { flex: 0 0 auto; }
+  .form-stepper button:not(.current) span:not(.form-stepper-number) { display: none; }
+}
+
+/* Largura de leitura: no máximo 1280px de conteúdo, com a barra do topo alinhada ao conteúdo. */
+.workspace { max-width: 1328px; margin-left: auto; margin-right: auto; }
+.topbar { max-width: 1280px; margin-left: max(24px, calc((100% - 1280px) / 2)); margin-right: max(24px, calc((100% - 1280px) / 2)); }
+@media (max-width:1250px) { .topbar { margin-left: 20px; margin-right: 20px; } }
+@media (max-width:1023px) { .topbar { margin-left: 16px; margin-right: 16px; } }
+/* Busca: atalho "/" só aparece onde há teclado físico. */
+.search-key { font-family: inherit; line-height: 20px; }
+@media (hover:none) { .search-key { display: none; } }
+
+/* Legibilidade: textos de leitura com no mínimo 12px e rótulos em caixa-alta com no mínimo 11px.
+   O prefixo :root garante prioridade sobre as regras anteriores, inclusive dentro de media queries. */
+:root :is(.field-hint,.field .field-hint,.metric-meta,.overview-tool-list small,.overview-finance .panel-sub,.overview-finance .chart-legend,.overview-finance .chart-data summary,.wheel-care,.overview-wheel .wheel-care,.gauge-caption > span,.overview-focus > small,.header-popover button small,.promo-copy small,.input-error,.procedure-record summary small,.live-calculation > p,.plan-template-body > small,.profile-section,.subtle-footnote,.link-list p,.kpi-label,.kpi small,.table th,.chart-legend,.up-chart figcaption,.chart-data,.chart-data caption,.question-card .row-between > b,.question-card .field label,.wheel-summary small,.result-details .roda-detail,.result-bottom > p,.financial-kpi small,.action-list li > span,.evidence-field summary,.donut-layout li,.next-card > p,.next-card li p,.next-card li > span,.journey-copy small,.journey-summary-action small,.journey-summary-action > span,.journey-award small,.journey-award b,.user-meta small,.auth-caption,.auth-note,.auth-demo p,.auth-preview-link,.quick-copy > small,.quick-cta,.plan-pill small,.finance-highlights small,.profile-plan small,.progress-steps p,.progress-steps h4,.traffic-row b,.sticky-actions > .muted-label) { font-size: 12px; }
+:root :is(.overview-tool-list b,.metric-heading,.journey-copy p,.journey-rules p) { font-size: 13px; }
+:root :is(.btn.small,.overview-heading .btn,.overview-wheel .panel-head .btn,.overview-focus .btn,.next-card .btn,.journey-celebration button,.auth-back .btn) { font-size: 12px; }
+@media (min-width:761px) and (max-width:1023px) { :root .side .nav-link { font-size: 12px; } }
+:root :is(.nav-section,.eyebrow,.section-label,.next-overline,.journey-eyebrow,.journey-mission-meta,.demotag,.auth-footer,.auth-step,.auth-kicker,.auth-topline,.auth-trust span,.badge,.overview-plan-list .badge,.diagnostic-overview .score-row .badge,.financial-kpi > div > span,.chart-bars span,.journey-celebration small,.demo-strip,.score-inside small,.donut-visual small,.sidebar-signature span,.bottom-nav button,.score-row b small) { font-size: 11px; }
+@media (max-width:760px) { :root .rating-btn { font-size: 13px; } }
+.form-step .form-grid > .field:only-child { grid-column: 1 / -1; }
