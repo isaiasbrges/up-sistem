@@ -1,6 +1,6 @@
 # Software UP
 
-Aplicação de Diagnóstico, Raio-X financeiro e ferramentas dos Kits, com paleta amarela, neutros frios, menu escuro e superfícies glass, conforme a atualização de design. A primeira versão usa cálculos decimais, regras e modelos editáveis, conforme decisão de funcionar sem IA.
+Aplicação de Diagnóstico, Raio-X financeiro e ferramentas dos Kits, com paleta azul e laranja, neutros frios, menu escuro e superfícies glass, conforme a atualização de design. A primeira versão usa cálculos decimais, regras e modelos editáveis, conforme decisão de funcionar sem IA.
 
 **Em preparação para publicação.** A nova API PostgreSQL funciona no ambiente local e tem testes de integração. O comando `npm start` usa a nova API PostgreSQL, com configurações privadas e encerramento gracioso. A publicação real e as integrações externas ainda dependem de validação. O [acompanhamento](docs/implementation-progress.md) registra o que falta e as evidências atuais.
 
@@ -26,6 +26,7 @@ Esse comando inicia um PostgreSQL portátil de desenvolvimento. Não envia e-mai
 
 - Dados por aluno, com ID estável, tabelas por recurso, RLS e credenciais distintas para recursos e operações internas.
 - Login por código de seis dígitos, hash protegido, dez minutos, cinco erros, limites persistentes, reenvio após 60 segundos e sessão de 30 dias.
+- Toda conta ativa cadastrada pode entrar por código, inclusive cadastro manual e conta sem compra. As ferramentas continuam dependendo das permissões dos produtos e dos aceites vigentes; contas inexistentes ou inativas não recebem códigos.
 - Cálculos financeiros com aritmética decimal, valores indisponíveis explícitos e no máximo três ações priorizadas.
 - Criação idempotente, edições com controle de versão, diagnósticos imutáveis e revisões mensais do Raio-X.
 - Recebimento Kiwify assinado, payload cifrado, deduplicação, tarefas persistentes e concessões por pedido/origem. Reembolso não revoga uma compra independente.

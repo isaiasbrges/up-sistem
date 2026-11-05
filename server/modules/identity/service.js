@@ -2,6 +2,7 @@
 const crypto = require('node:crypto');
 const {isIP} = require('node:net');
 const {fail} = require('../../shared/errors');
+const {validPassword,hashPassword,verifyPassword}=require('./password');
 const CODE_TTL = 10*60*1000;
 const SESSION_TTL = 30*24*60*60*1000;
 const normalizeEmail = value => String(value || '').trim().toLowerCase();
@@ -18,13 +19,7 @@ async function takeLimit(client,key,max,ms,at) {
   return {allowed:row.count <= max, retryAfter:Math.max(1,Math.ceil((row.expires_at.getTime()-at)/1000))};
 }
 
-async function hasAccess(client,user,at) {
-  if (!user || user.status !== 'active') return false;
-  if (['admin','suporte'].includes(user.platform_role)) return true;
-  const {rowCount} = await client.query(`SELECT 1 FROM up.entitlements WHERE user_id=$1 AND status='active'
-    AND activated_at <= $2 AND (expires_at IS NULL OR expires_at > $2) LIMIT 1`, [user.id,new Date(at)]);
-  return rowCount > 0;
-}
+const canSignIn=user=>!!user&&user.status==='active';
 
 function createIdentity({db,authSecret,sendCode,now=Date.now,ipLimit=20}) {
   if (typeof authSecret !== 'string' || authSecret.length < 32) throw Error('Configure AUTH_SECRET com pelo menos 32 caracteres aleatórios.');
@@ -35,7 +30,7 @@ function createIdentity({db,authSecret,sendCode,now=Date.now,ipLimit=20}) {
     await client.query('INSERT INTO up_private.login_events(user_id,email,ip,result,created_at) VALUES((SELECT id FROM up.users WHERE email=$1),$1,$2,$3,$4)', [email,safeIp(ip),result,new Date(at)]);
   }
 
-  async function requestCode(rawEmail,ip) {
+  async function requestCode(rawEmail,ip,purpose='login') {
     const email=normalizeEmail(rawEmail),at=now();
     if (!validEmail(email)) fail(400,'INVALID_EMAIL','Informe um e-mail válido.',{email:'Informe um e-mail válido.'});
     const decision=await db.internal(async client => {
@@ -45,13 +40,14 @@ function createIdentity({db,authSecret,sendCode,now=Date.now,ipLimit=20}) {
       if (!cooldown.allowed) { await log(client,email,ip,'limited',at); return {limited:cooldown.retryAfter}; }
       const emailRate=await takeLimit(client,'request:email:'+privateKey(email),3,900000,at);
       if (!emailRate.allowed) { await log(client,email,ip,'limited',at); return {limited:emailRate.retryAfter}; }
-      const {rows:[user]}=await client.query('SELECT id,status,platform_role FROM up.users WHERE email=$1',[email]);
-      if (!(await hasAccess(client,user,at))) { await log(client,email,ip,'unavailable',at); return {}; }
+      const {rows:[user]}=await client.query('SELECT id,status,platform_role,EXISTS(SELECT 1 FROM up_private.admin_passwords p WHERE p.user_id=up.users.id) AS has_password FROM up.users WHERE email=$1',[email]);
+      if (!canSignIn(user) || (purpose==='password_reset' ? user.platform_role!=='admin' : (user.platform_role==='admin'&&user.has_password))) { await log(client,email,ip,'unavailable',at); return {}; }
       const challenge=crypto.randomUUID(),code=String(crypto.randomInt(1000000)).padStart(6,'0');
       await client.query(`INSERT INTO up_private.login_codes(user_id,challenge_id,code_hash,issued_at,expires_at)
         VALUES($1,$2,$3,$4,$5) ON CONFLICT(user_id) DO UPDATE SET challenge_id=EXCLUDED.challenge_id,
         code_hash=EXCLUDED.code_hash,issued_at=EXCLUDED.issued_at,expires_at=EXCLUDED.expires_at,attempts=0,consumed_at=NULL`,
         [user.id,challenge,codeHash(challenge,code),new Date(at),new Date(at+CODE_TTL)]);
+      await client.query('UPDATE up_private.login_codes SET purpose=$2 WHERE user_id=$1',[user.id,purpose]);
       await log(client,email,ip,'requested',at);
       return {userId:user.id,challenge,code};
     });
@@ -65,25 +61,34 @@ function createIdentity({db,authSecret,sendCode,now=Date.now,ipLimit=20}) {
         });
       }
     }
-    return {message:'Se este e-mail tiver uma compra, você vai receber um código em instantes.',retryAfterSeconds:60};
+    return {message:'Se este e-mail tiver uma conta ativa no UP, você vai receber um código em instantes.',retryAfterSeconds:60};
   }
 
-  async function verifyCode(rawEmail,rawCode,ip) {
+  async function verifyCode(rawEmail,rawCode,ip,newPassword) {
+    const purpose=newPassword===undefined?'login':'password_reset';
+    if(purpose==='password_reset'&&!validPassword(newPassword))fail(400,'INVALID_PASSWORD','Use uma senha de 12 a 128 caracteres.');
     const email=normalizeEmail(rawEmail),code=String(rawCode || ''),at=now();
     if (!validEmail(email)) fail(400,'INVALID_EMAIL','Informe um e-mail válido.');
     const result=await db.internal(async client => {
       const rate=await takeLimit(client,'verify:ip:'+privateKey(ip || 'unknown'),50,900000,at);
       if (!rate.allowed) { await log(client,email,ip,'limited',at); return {limited:rate.retryAfter}; }
-      const {rows:[user]}=await client.query('SELECT id,status,platform_role FROM up.users WHERE email=$1',[email]);
+      const {rows:[user]}=await client.query('SELECT id,status,platform_role,EXISTS(SELECT 1 FROM up_private.admin_passwords p WHERE p.user_id=up.users.id) AS has_password FROM up.users WHERE email=$1 FOR UPDATE',[email]);
       let entry;
       if (user) ({rows:[entry]}=await client.query('SELECT * FROM up_private.login_codes WHERE user_id=$1 FOR UPDATE',[user.id]));
       const matches=crypto.timingSafeEqual(entry?.code_hash || Buffer.alloc(32),codeHash(entry?.challenge_id || 'absent',code));
-      const usable=entry && !entry.consumed_at && entry.expires_at.getTime()>at && entry.attempts<5;
-      if (!usable || !/^\d{6}$/.test(code) || !matches || !(await hasAccess(client,user,at))) {
+      const usable=entry && !entry.consumed_at && entry.expires_at.getTime()>at && entry.attempts<5 && entry.purpose===purpose;
+      if (!usable || !/^\d{6}$/.test(code) || !matches || !canSignIn(user) || (purpose==='password_reset' ? user.platform_role!=='admin' : (user.platform_role==='admin'&&user.has_password))) {
         if (usable) await client.query('UPDATE up_private.login_codes SET attempts=least(5,attempts+1) WHERE user_id=$1',[user.id]);
         await log(client,email,ip,'invalid',at); return {invalid:true};
       }
       await client.query('UPDATE up_private.login_codes SET consumed_at=$2 WHERE user_id=$1',[user.id,new Date(at)]);
+      if(purpose==='password_reset'){
+        const passwordHash=await hashPassword(newPassword);
+        await client.query('INSERT INTO up_private.admin_passwords(user_id,password_hash,updated_at) VALUES($1,$2,$3) ON CONFLICT(user_id) DO UPDATE SET password_hash=EXCLUDED.password_hash,updated_at=EXCLUDED.updated_at',[user.id,passwordHash,new Date(at)]);
+        await client.query('UPDATE up_private.sessions SET revoked_at=$2 WHERE user_id=$1 AND revoked_at IS NULL',[user.id,new Date(at)]);
+        await client.query("INSERT INTO up_private.audit_events(actor_id,action,target_type,target_id,reason) VALUES($1::uuid,'identity.password_reset','user',$1::text,'Senha definida após confirmação de código por e-mail.')",[user.id]);
+      }
+
       const token=crypto.randomBytes(32).toString('hex');
       await client.query('INSERT INTO up_private.sessions(token_hash,user_id,created_at,expires_at) VALUES($1,$2,$3,$4)',[digest(token),user.id,new Date(at),new Date(at+SESSION_TTL)]);
       await client.query('UPDATE up.users SET last_login_at=$2 WHERE id=$1',[user.id,new Date(at)]);
@@ -92,6 +97,34 @@ function createIdentity({db,authSecret,sendCode,now=Date.now,ipLimit=20}) {
     });
     if (result.limited) fail(429,'RATE_LIMITED','Aguarde para tentar novamente.',{retryAfter:result.limited});
     if (result.invalid) fail(401,'INVALID_CODE','Código inválido ou expirado.');
+    return result;
+  }
+
+  async function loginPassword(rawEmail,password,ip) {
+    const email=normalizeEmail(rawEmail),at=now();
+    if(!validEmail(email)||typeof password!=='string'||password.length>128)fail(401,'INVALID_CREDENTIALS','E-mail ou senha inválidos.');
+    const result=await db.internal(async client=>{
+      const ipRate=await takeLimit(client,'password:ip:'+privateKey(ip||'unknown'),30,900000,at);
+      const emailRate=await takeLimit(client,'password:email:'+privateKey(email),10,900000,at);
+      if(!ipRate.allowed||!emailRate.allowed){
+        await log(client,email,ip,'limited',at);
+        return {limited:Math.max(ipRate.retryAfter,emailRate.retryAfter)};
+      }
+      const {rows:[user]}=await client.query("SELECT id,status,platform_role FROM up.users WHERE email=$1 FOR UPDATE",[email]);
+      const {rows:[credential]}=await client.query('SELECT password_hash FROM up_private.admin_passwords WHERE user_id=$1',[user?.id||null]);
+      const matches=await verifyPassword(password,credential?.password_hash);
+      if(!matches||!canSignIn(user)||user.platform_role!=='admin'){
+        await log(client,email,ip,'invalid',at);
+        return {invalid:true};
+      }
+      const token=crypto.randomBytes(32).toString('hex');
+      await client.query('INSERT INTO up_private.sessions(token_hash,user_id,created_at,expires_at) VALUES($1,$2,$3,$4)',[digest(token),user.id,new Date(at),new Date(at+SESSION_TTL)]);
+      await client.query('UPDATE up.users SET last_login_at=$2 WHERE id=$1',[user.id,new Date(at)]);
+      await log(client,email,ip,'success',at);
+      return {token,userId:user.id};
+    });
+    if(result.limited)fail(429,'RATE_LIMITED','Aguarde antes de tentar novamente.',{retryAfter:result.limited});
+    if(result.invalid)fail(401,'INVALID_CREDENTIALS','E-mail ou senha inválidos.');
     return result;
   }
 
@@ -131,6 +164,6 @@ function createIdentity({db,authSecret,sendCode,now=Date.now,ipLimit=20}) {
     });
   }
 
-  return {requestCode,verifyCode,authenticate,logout,provision};
+  return {requestCode,verifyCode,loginPassword,authenticate,logout,provision};
 }
 module.exports = {createIdentity,normalizeEmail,validEmail,digest,CODE_TTL,SESSION_TTL,takeLimit};

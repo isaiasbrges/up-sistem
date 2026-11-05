@@ -5,6 +5,7 @@ Objetivo ativo: deixar o Software UP pronto para publicar, seguindo o PDF e a de
 ## Implementado nesta etapa
 
 - Design system consolidado em 30/10: paleta amarela/dourada e material glass compartilhados pelo aplicativo e pelas referências, com temas claro/escuro. Os 88 arquivos da cópia autorizada foram lidos e inventariados; 35 HTMLs permanecem em `design-system/references/`. Seis fontes locais ausentes foram recuperadas do arquivo original com licença e hashes verificados. Tokens gerados, lint integrado e catálogo documentado. Testes de unidade/fluxos: 45 aprovados, além das verificações de lógica e 18 rotas. Detalhes e decisões em [relatório de migração](../design-system/audit/migration-report.md). A prévia visual local usa a porta 3002, sem banco de dados ou envio de e-mail.
+- 04/11/2026: paleta de volta ao azul `#0031E8` e laranja `#FF8D00`, mantendo material glass e temas claro/escuro. Detalhes em design-system/audit/migration-report.md.
 
 - Migrações PostgreSQL em `server/db/migrations/`: usuários, acessos, autenticação persistente, tabelas por recurso, RLS, eventos, tarefas e auditoria.
 - Papéis distintos para consultas do aluno e operações internas. A conexão recusa superusuário, proprietário das tabelas e credenciais com papéis misturados.

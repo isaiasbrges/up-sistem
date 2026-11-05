@@ -33,12 +33,12 @@ test('PostgreSQL real: isolamento, acesso por produto e login persistente',async
     await assert.rejects(db.asUser(b.id,c=>c.query('INSERT INTO up.weekly_checkins(user_id,plan_id,answers) VALUES($1,$2,$3)',[b.id,plan.id,JSON.stringify(['a','b','c','d','e'])])),e=>e.code==='23503');
   });
 
-  await t.test('não envia código sem acesso ativo e mantém a resposta igual',async()=>{
+  await t.test('contas manuais ativas recebem código sem compra e a resposta continua genérica',async()=>{
     const unknown=await identity.requestCode('desconhecido@example.com','127.0.0.1');
     const inactive=await identity.requestCode(noAccess.email,'127.0.0.1');
     const known=await identity.requestCode(a.email,'127.0.0.1');
     assert.deepEqual(unknown,known); assert.deepEqual(inactive,known);
-    assert.equal(sent.has('desconhecido@example.com'),false); assert.equal(sent.has(noAccess.email),false);
+      assert.equal(sent.has('desconhecido@example.com'),false); assert.equal(sent.has(noAccess.email),true);
     const {rows:[row]}=await owner.query('SELECT * FROM up_private.login_codes WHERE user_id=$1',[a.id]);
     assert.equal(row.code_hash.length,32);assert.notEqual(row.code_hash.toString(),sent.get(a.email));
   });

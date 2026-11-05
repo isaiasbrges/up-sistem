@@ -41,6 +41,6 @@
 }
 @media print {
   .theme-toggle { display:none!important; }
-  :root[data-theme="dark"] { color-scheme:light; --text-primary:#101828; --text-secondary:#364256; --text-muted:#536174; --app-muted:#536174; --surface:#fff; --surface-subtle:#f4f6fa; --bg-canvas:#fff; --primary:var(--primary); --chart-primary:#A47B00; --chart-ink:#202838; --chart-grid:#d3dce9; --chart-track:#e8edf4; --accent-text:#8a4800; }
+  :root[data-theme="dark"] { color-scheme:light; --text-primary:#101828; --text-secondary:#364256; --text-muted:#536174; --app-muted:#536174; --surface:#fff; --surface-subtle:#f4f6fa; --bg-canvas:#fff; --primary:var(--primary); --chart-primary:#0031E8; --chart-ink:#202838; --chart-grid:#d3dce9; --chart-track:#e8edf4; --accent-text:#8a4800; }
   [data-theme="dark"] :is(body,.app-body,.panel,.kpi,.financial-kpi,.overview-metric,.readout,.notice-box,.traffic-row,.question-card,.button-card,.legal-copy) { background:#fff; color:var(--text-primary); box-shadow:none; border-color:#d3dce9; }
 }

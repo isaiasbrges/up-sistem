@@ -16,14 +16,15 @@ function readPath(value,path) {
 }
 function bounded(value,max) {return typeof value==='string'&&value.length>0&&value.length<=max&&!/[\x00-\x1f]/.test(value);}
 
-function createBilling({db,secret,previousSecret,previousValidUntil,encryptionKey,now=Date.now}) {
-  if(typeof secret!=='string'||secret.length<32)throw Error('Configure KIWIFY_WEBHOOK_SECRET com um token longo e aleatório.');
+function createBilling({db,secret,additionalSecrets=[],previousSecret,previousValidUntil,encryptionKey,now=Date.now}) {
+  if(typeof secret!=='string'||!secret.trim())throw Error('Configure KIWIFY_WEBHOOK_SECRET com o token informado pela Kiwify.');
   if(previousSecret&&(!previousValidUntil||!Number.isFinite(new Date(previousValidUntil).getTime())))throw Error('Informe a validade do token anterior da Kiwify.');
+  if(!Array.isArray(additionalSecrets)||additionalSecrets.length>20||additionalSecrets.some(value=>typeof value!=='string'||!value.trim()))throw Error('Configure os tokens adicionais da Kiwify como uma lista de strings preenchidas.');
   const cipher=createPayloadCipher(encryptionKey);
   function verify(raw,signature) {
     if(!Buffer.isBuffer(raw)||typeof signature!=='string'||!/^[a-f0-9]{40}$/.test(signature))fail(401,'INVALID_SIGNATURE','Assinatura inválida.');
     const candidate=Buffer.from(signature,'hex');
-    const keys=[secret,...(previousSecret&&new Date(previousValidUntil).getTime()>now()?[previousSecret]:[])];
+    const keys=[secret,...additionalSecrets,...(previousSecret&&new Date(previousValidUntil).getTime()>now()?[previousSecret]:[])];
     let valid=false;for(const key of keys)valid=crypto.timingSafeEqual(candidate,crypto.createHmac('sha1',key).update(raw).digest())||valid;
     if(!valid)fail(401,'INVALID_SIGNATURE','Assinatura inválida.');
   }

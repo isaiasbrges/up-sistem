@@ -1,23 +1,32 @@
-# UP Software — Yellow Glass
+# UP Software — Azul UP com material glass
+
+## Administração premium — referência de 03/11/2026
+
+A área autenticada da equipe usa os tokens canônicos `up-*` e `staff-*`, com fundo preto #0D0D0D, superfícies claras #F7F3EE, azul #0031E8 e laranja #FF8D00, conforme a nova referência fornecida pelo responsável. Essa especificação substitui as restrições anteriores de azul/laranja somente na administração. Os tokens dos alunos e as referências históricas permanecem independentes.
+
+`app/admin-premium.css` aplica os tokens com escopo `.staff-premium`. Azul sinaliza informação; laranja, ações e atenção. Texto azul sobre superfícies escuras usa uma tonalidade acessível; o azul elétrico permanece nos elementos gráficos. O tema claro respeita a preferência já existente. As cores de contraste são verificadas no lint.
+
+Não apresentar contagens, crescimentos, cadastros, atividades ou estados de conexão fictícios. O gráfico contabiliza cadastros por dia em São Paulo, não uma reconstituição de alunos ativos no passado. Distribuição de produtos representa concessões; um aluno pode ter várias. Estados sem monitoramento são declarados como não verificados.
 
 ## 1. Visão geral
 Interface profissional de gestão empresarial: clareza, dados legíveis e progresso útil. O layout, os formulários, a gamificação, a navegação e as animações existentes são preservados. Esta diretriz foi criada a partir do sistema existente; não foi recuperada de um export do Stitch.
 
 ## 2. Identidade e cor
-Acento principal: amarelo `#F5C400`. Dourado secundário: `#E5B82E`. Neutros frios, branco e grafite sustentam a interface. Não usar bege ou creme como fundo de página. Verde, vermelho e amarelo semântico continuam indicando sucesso, erro e atenção, sempre acompanhados de texto/ícone.
+Acento principal: azul `#0031E8`. Destaque: laranja `#FF8D00`. Neutros frios, branco e grafite sustentam a interface; o menu continua azul-marinho escuro. Não usar bege ou creme como fundo de página. Verde, vermelho e amarelo semântico continuam indicando sucesso, erro e atenção, sempre acompanhados de texto/ícone.
 
 | Papel | Claro | Escuro |
 |---|---|---|
-| Botão principal / seleção | #F5C400 | #F5C400 |
-| Texto no botão amarelo | #181B22 | #181B22 |
-| Link / ícone primário | #785900 | #F6D76E |
+| Botão principal / seleção | #0031E8 | #0031E8 |
+| Texto no botão azul | #FFFFFF | #FFFFFF |
+| Link / ícone primário | #0031E8 | #8CA4FF |
+| Destaque (compra do Kit, item ativo) | #FF8D00 com texto #0D0D0D | #FF8D00 com texto #0D0D0D |
 | Canvas | #F5F7FA | #0B1220 |
 | Superfície sólida de fallback | #FFFFFF | #152134 |
 | Texto principal | #0D0D0D | #F0F4FC |
-| Série principal de gráfico | #A47B00 | #F5C400 |
-| Série comparativa | #64748B | #A7B6CC |
+| Série principal de gráfico | #0031E8 | #6F8DFF |
+| Série de destaque (menor nota, mês negativo) | #D46A00 | #FFA640 |
 
-Amarelo vivo é preenchimento de controles, não texto sobre branco. Texto comum exige contraste mínimo 4,5:1; contornos essenciais e marcas de gráficos exigem 3:1. As legendas e tabelas de dados continuam disponíveis. Não associar pontos de gamificação a valores financeiros ou a notas maiores no diagnóstico.
+O laranja vivo é preenchimento de botão de destaque, sempre com texto escuro; nunca texto branco sobre laranja. Como texto ou ícone sobre branco, use `accent-text` (#A35400). Texto comum exige contraste mínimo 4,5:1; contornos essenciais e marcas de gráficos exigem 3:1. As legendas e tabelas de dados continuam disponíveis. Não associar pontos de gamificação a valores financeiros ou a notas maiores no diagnóstico.
 
 ## 3. Tipografia e espaçamento
 Inter e Inter Display locais, pesos 400/500/600, com `font-display: swap`. Escala de espaçamento de 4 px; preservar os tamanhos de controle e os breakpoints documentados em docs/foundations.md. Navegação compacta não remove nomes acessíveis.
@@ -31,4 +40,4 @@ Implementação CSS/JS: components/. Exemplos visuais: references/components/. O
 ## 6. Fontes da verdade e manutenção
 Esta diretriz define as decisões de uso. `tokens.json` é a representação executável dessas decisões; `tokens.css` é gerado por `npm run design:build`. Alterar os dois de forma coerente. `npm run lint:design` verifica geração, contrastes, assets e referências. Não criar uma segunda paleta em folhas do aplicativo.
 
-Os aliases `brand-blue`, `brand-orange`, `brand-cream`, `blue-*` e `orange-*` são mantidos apenas para compatibilidade e agora resolvem para a nova paleta. Código novo deve usar tokens semânticos. As classes existentes não são renomeadas para preservar os fluxos.
+`brand-blue` e `brand-orange` voltaram a ser os tokens canônicos da marca em 04/11/2026; a paleta amarela de 30/10 foi retirada e o lint bloqueia os valores dela. `brand-cream`, `blue-*` e `orange-*` seguem como escalas de apoio. Código novo deve usar tokens semânticos. As classes existentes não são renomeadas para preservar os fluxos.

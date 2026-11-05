@@ -75,3 +75,23 @@ test('caixa local não pode ser ativada em produção e serviço customizado exi
   assert.throws(()=>loadMailConfig(env({SMTP_PROVIDER:'custom'})),{code:'CONFIGURATION_ERROR'});
   assert.equal(loadMailConfig(env({SMTP_PROVIDER:'custom',SMTP_HOST:'smtp.titan.email',MAIL_FROM:'UP <acesso@example.com>'})).host,'smtp.titan.email');
 });
+
+test('código tem template HTML compatível e alternativa textual, sem expor o OTP no link',async()=>{
+ const f=fixture();await f.mailer.sendCode('aluno@example.com','001234');const m=f.sent[0];
+ assert.equal(typeof m.html,'string');assert.match(m.html,/<html[^>]+lang="pt-BR"/);assert.match(m.html,/role="presentation"/);
+ assert.match(m.html,/001234/);assert.match(m.html,/10 minutos/);assert.match(m.html,/uma vez/);assert.match(m.html,/https:\/\/up\.example\.com\/entrar/);
+ assert.match(m.text,/001234/);assert.doesNotMatch(m.html,/<script|onclick=|navigator\.clipboard|href="[^"]*001234|Copiar código/i);
+ assert.match(m.html,/#FF8D00/i);assert.match(m.html,/#0031E8/i);assert.match(m.html,/#F7F3EE/i);assert.match(m.html,/#0D0D0D/i);
+});
+
+test('avisos HTML escapam nomes e conteúdo e preservam destino e identificador',async()=>{
+ const f=fixture();await f.mailer.sendNotice({to:'aluno@example.com',name:'<img src=x onerror=alert(1)> & João',template:'access',product:'kit',key:'access:sample'});
+ const m=f.sent[0];assert.match(m.html,/&lt;img src=x onerror=alert\(1\)&gt; &amp; João/);assert.doesNotMatch(m.html,/<img src=x/);assert.match(m.html,/Kit UP Completo/);assert.match(m.html,/Acessar a plataforma/);assert.match(m.text,/Kit UP Completo/);assert.ok(m.messageId);
+});
+
+test('mensagem MIME envia partes HTML e texto sem depender de imagens remotas',async()=>{
+ let generated;const mailer=createMailer({config:loadMailConfig(env()),appOrigin:'https://up.example.com',createTransport:()=>{
+  const stream=nodemailer.createTransport({streamTransport:true,buffer:true,newline:'unix'});return {verify:async()=>true,close(){},sendMail:async m=>{generated=await stream.sendMail(m);}};
+ }});
+ await mailer.sendCode('aluno@example.com','000123');const mime=generated.message.toString();assert.match(mime,/multipart\/alternative/);assert.match(mime,/Content-Type: text\/html; charset=utf-8/);assert.match(mime,/Content-Type: text\/plain; charset=utf-8/);assert.match(mime,/000123/);assert.doesNotMatch(mime,/senha-ficticia/);
+});

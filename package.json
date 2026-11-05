@@ -5,8 +5,8 @@
   "description": "Frontend navegável do Software UP sobre o Design System original",
   "scripts": {
     "test": "npm run lint && npm run test:unit && npm run test:integration",
-    "test:unit": "node tests/logic.test.js && node tests/screens.test.js && node --test tests/workflows.test.js tests/finance-decimal.test.js tests/code-inputs.test.js tests/mail.test.js tests/admin-ui.test.js tests/access-duration.test.js tests/account-ui.test.js tests/charts.test.js tests/color-mode.test.js tests/journey.test.js tests/runtime.test.js",
-    "test:integration": "node --test --test-timeout=120000 --test-concurrency=1 tests/backend.test.js tests/foundation.test.js tests/resources.test.js tests/api-v1.test.js tests/billing.test.js tests/client-v1.test.js tests/admin.test.js tests/privacy.test.js tests/runtime-integration.test.js",
+    "test:unit": "node tests/logic.test.js && node tests/screens.test.js && node --test tests/workflows.test.js tests/finance-decimal.test.js tests/code-inputs.test.js tests/mail.test.js tests/admin-ui.test.js tests/access-duration.test.js tests/account-ui.test.js tests/charts.test.js tests/color-mode.test.js tests/journey.test.js tests/runtime.test.js tests/kiwify-signature.test.js tests/admin-premium.test.js tests/student-preview.test.js",
+    "test:integration": "node --test --test-timeout=120000 --test-concurrency=1 tests/backend.test.js tests/foundation.test.js tests/resources.test.js tests/api-v1.test.js tests/billing.test.js tests/client-v1.test.js tests/admin.test.js tests/privacy.test.js tests/runtime-integration.test.js tests/student-preview-access.test.js tests/registered-login.test.js tests/admin-password.test.js",
     "db:migrate": "node server/db/migrate.js",
     "db:provision": "node server/db/provision.js",
     "dev:postgres": "node dev/local.js",

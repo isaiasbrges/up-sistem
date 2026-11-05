@@ -1,0 +1,55 @@
+/* Shell da equipe, navegação e pesquisa sobre recursos já autorizados. */
+(()=>{'use strict';
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const icon=(name,size=21)=>window.UP?.icon(name,size)||'';
+const main=[['overview','Visão geral','home'],['students','Alunos','users'],['products','Produtos','layers'],['events','Eventos Kiwify','zap'],['integrations','Integrações','link'],['reports','Relatórios','chart-bar'],['settings','Configurações','settings']];
+let context,searchTimer,searchVersion=0;
+function entries(state){return state.user.role==='admin'?main:[['students','Alunos','users'],['privacy','Solicitações de dados','shield-check']];}
+function notices(){const s=window.UPAdmin?.snapshot?.();return s?[...(s.events?.review?[{tab:'events',title:count(s.events.review)+' evento(s) em revisão',text:'Confira as pendências da integração.'}]:[]),...(s.jobs?.failed?[{tab:'integrations',title:count(s.jobs.failed)+' tarefa(s) com falha',text:'Confira o processamento da plataforma.'}]:[])]:[];}
+const count=v=>Number(v||0).toLocaleString('pt-BR');
+function render(state,content,{active,themeButton}){
+ const selected=active==='admin'?(state.staffTab||(state.user.role==='admin'?'overview':'students')):active,items=entries(state),notifications=state.user.role==='admin'?notices():[];
+ const initials=esc((state.user.name||'UP').split(/\s+/).filter(Boolean).slice(0,2).map(s=>s[0]).join('').toUpperCase());
+ const role=state.user.role==='admin'?'Administrador':'Equipe de suporte';
+ const previewButton=state.user.role==='admin'?'<button type="button" class="nav-link" data-staff-student-preview title="Ver área do aluno"><span class="ic">'+icon('book-open')+'</span><span class="nav-label">Ver área do aluno</span></button>':'';
+ const nav=(id,label,ic)=>{const current=selected===id||(state.user.role==='admin'&&id==='settings'&&['legal','privacy'].includes(selected));return `<button type="button" class="nav-link ${current?'active':''}" ${['profile','support'].includes(id)?`data-go="${id}"`:`data-staff-nav="${id}"`} title="${label}" ${current?'aria-current="page"':''}><span class="ic">${icon(ic)}</span><span class="nav-label">${label}</span></button>`;};
+ return `<div class="app-body staff-premium"><div class="shell"><aside class="side" aria-label="Menu administrativo"><div class="sidebar-top"><button class="sidebar-brand" type="button" data-staff-nav="${items[0][0]}" aria-label="UP Software · Início"><img src="design-system/assets/logos/up-logo-branco.png" class="staff-logo" alt="UP Software"><span class="staff-logo-caption">SOFTWARE</span></button><button type="button" class="sidebar-toggle" data-action="toggle-sidebar" aria-controls="up-sidebar-nav" aria-expanded="true" aria-label="Recolher menu">${icon('chevron-left',16)}</button></div><nav id="up-sidebar-nav" aria-label="Áreas administrativas">${items.map(([id,label,ic])=>nav(id,label,ic)).join('')}${previewButton}<div class="nav-section">Minha conta</div>${nav('profile','Minha conta','user')}${nav('support','Ajuda e suporte','circle-help')}<button type="button" class="nav-link nav-logout" data-action="logout" title="Sair"><span class="ic">${icon('log-out')}</span><span class="nav-label">Sair</span></button></nav></aside><button class="menu-backdrop" type="button" data-action="close-sidebar" aria-label="Fechar menu" tabindex="-1"></button><div class="main"><header class="topbar"><button type="button" class="staff-mobile-menu header-icon" data-action="toggle-sidebar" aria-controls="up-sidebar-nav" aria-expanded="false" aria-label="Abrir menu">${icon('menu')}</button><div class="staff-global-search" role="search"><label class="screen-reader" for="staff-global-search">Buscar alunos, produtos ou eventos</label>${icon('search',20)}<input id="staff-global-search" data-staff-global-search type="search" maxlength="254" autocomplete="off" placeholder="Buscar aluno, e-mail, produto ou evento…" aria-controls="staff-global-results" aria-expanded="false"><kbd>Ctrl + K</kbd><section id="staff-global-results" class="header-popover staff-search-results" aria-label="Resultados da busca" aria-live="polite" hidden></section></div><div class="header-actions">${themeButton?.()||''}<div class="notification-wrap"><button type="button" class="header-icon" data-action="toggle-notifications" aria-label="Notificações${notifications.length?', '+notifications.length+' aviso(s)':''}" aria-controls="notification-panel" aria-expanded="false">${icon('bell')}${notifications.length?'<i class="unread-dot"></i>':''}</button><section id="notification-panel" class="header-popover" aria-label="Notificações" hidden><div class="popover-title">Notificações</div>${notifications.length?notifications.map(n=>`<button type="button" data-staff-nav="${n.tab}"><span class="staff-notice-dot"></span><span><strong>${n.title}</strong><small>${n.text}</small></span>${icon('chevron-right',16)}</button>`).join(''):'<p class="notification-empty">Nenhum aviso disponível.</p>'}</section></div><div class="staff-profile-wrap"><button type="button" class="user-pill" data-staff-profile-toggle aria-expanded="false" aria-controls="staff-profile-menu"><span class="avatar">${initials}</span><span class="user-meta"><strong>${esc(state.user.name)}</strong><small>${role}</small></span>${icon('chevron-down',17)}</button><section id="staff-profile-menu" class="header-popover" hidden aria-label="Menu da conta"><button type="button" data-go="profile">${icon('user',18)}Minha conta</button><button type="button" data-go="support">${icon('circle-help',18)}Ajuda e suporte</button><button type="button" data-action="logout">${icon('log-out',18)}Sair</button></section></div></div></header><main class="workspace" id="main-content">${content}</main><footer class="staff-footer"><span>UP Software · Universo do Propósito</span><span>Gestão com clareza.</span></footer></div></div></div>`;
+}
+function closeSearch(){const input=document.querySelector('[data-staff-global-search]'),results=document.querySelector('#staff-global-results');if(results)results.hidden=true;input?.setAttribute('aria-expanded','false');}
+async function search(input){
+ const query=input.value.trim(),version=++searchVersion,currentUser=context?.state.user.id;
+ const results=document.querySelector('#staff-global-results');if(!results)return;
+ if(query.length<2){closeSearch();return;}
+ results.hidden=false;input.setAttribute('aria-expanded','true');results.innerHTML='<p class="staff-search-note" role="status">Buscando…</p>';
+ const isAdmin=context.state.user.role==='admin',q=query.toLocaleLowerCase('pt-BR');
+ const navigation=entries(context.state).filter(([,label])=>label.toLocaleLowerCase('pt-BR').includes(q));
+ try{
+  const [students,products,events]=await Promise.all([window.UPBackend.request('/admin/students?limit=5&offset=0&search='+encodeURIComponent(query)),isAdmin?window.UPBackend.request('/admin/products'):[],isAdmin?window.UPBackend.request('/admin/events?limit=100&offset=0'):{items:[]}]);
+  if(version!==searchVersion||currentUser!==context?.state.user.id||!input.isConnected||input.value.trim()!==query)return;
+  const names={front:'Método UP · Diagnóstico e Raio-X',essencial:'Kit Essencial',kit:'Kit UP Completo'};
+  const productMatches=products.filter(p=>(names[p.product_code]+' '+p.kiwify_product_id).toLocaleLowerCase('pt-BR').includes(q));
+  const eventMatches=events.items.filter(e=>(e.order_id+' '+e.event_type+' '+e.status).toLocaleLowerCase('pt-BR').includes(q)).slice(0,4);
+  const rows=[...students.items.map(s=>`<button type="button" data-staff-search-student="${esc(s.id)}" data-email="${esc(s.email)}">${icon('user',18)}<span><strong>${esc(s.name)}</strong><small>${esc(s.email)}</small></span>${icon('arrow-up-right',16)}</button>`),...productMatches.map(p=>`<button type="button" data-staff-nav="products">${icon('layers',18)}<span><strong>${names[p.product_code]}</strong><small>${esc(p.kiwify_product_id)}</small></span></button>`),...eventMatches.map(e=>`<button type="button" data-staff-search-event="${esc(e.id)}" data-order="${esc(e.order_id)}">${icon('zap',18)}<span><strong>Pedido ${esc(e.order_id)}</strong><small>${esc(e.event_type)} · ${esc(e.status)}</small></span></button>`),...navigation.map(([id,label,ic])=>`<button type="button" data-staff-nav="${id}">${icon(ic,18)}<span>${label}</span></button>`)];
+  results.innerHTML=rows.length?rows.join('')+'<p class="staff-search-note">Alunos por nome/e-mail · Produtos · 100 eventos mais recentes</p>':'<p class="staff-search-note">Nenhum resultado encontrado.</p>';
+ }catch{if(version===searchVersion&&input.isConnected)results.innerHTML='<p class="staff-search-note" role="alert">Não foi possível buscar. Tente novamente.</p>';}
+}
+document.addEventListener('input',event=>{if(!event.target.matches('[data-staff-global-search]'))return;searchVersion++;clearTimeout(searchTimer);const input=event.target;searchTimer=setTimeout(()=>search(input),300);});
+document.addEventListener('keydown',event=>{
+ if(!context?.state.signed)return;
+ if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){const input=document.querySelector('[data-staff-global-search]');if(input){event.preventDefault();input.focus();input.select();}}
+ if(event.key==='Escape'){closeSearch();const menu=document.querySelector('#staff-profile-menu');if(menu)menu.hidden=true;document.querySelector('[data-staff-profile-toggle]')?.setAttribute('aria-expanded','false');}
+ if(event.key==='ArrowDown'||event.key==='ArrowUp'){
+  const input=document.querySelector('[data-staff-global-search]'),results=document.querySelector('#staff-global-results');if(!results||results.hidden)return;
+  const buttons=[...results.querySelectorAll('button')],index=buttons.indexOf(event.target);if(event.target!==input&&index<0)return;
+  event.preventDefault();const next=event.key==='ArrowDown'?(index+1)%Math.max(1,buttons.length):index<=0?buttons.length-1:index-1;buttons[next]?.focus();
+ }
+});
+document.addEventListener('click',event=>{
+ const profile=event.target.closest('[data-staff-profile-toggle]');if(profile){const menu=document.querySelector('#staff-profile-menu');if(menu){menu.hidden=!menu.hidden;profile.setAttribute('aria-expanded',String(!menu.hidden));}return;}
+ if(!event.target.closest('.staff-profile-wrap')){const menu=document.querySelector('#staff-profile-menu');if(menu)menu.hidden=true;document.querySelector('[data-staff-profile-toggle]')?.setAttribute('aria-expanded','false');}
+ if(!event.target.closest('.staff-global-search'))closeSearch();
+ const student=event.target.closest('[data-staff-search-student]');if(student){closeSearch();window.UPAdmin?.openStudent(student.dataset.staffSearchStudent,student.dataset.email);}
+ const order=event.target.closest('[data-staff-search-event]');if(order){closeSearch();window.UPAdmin?.openEvent(order.dataset.staffSearchEvent,order.dataset.order);}
+});
+window.UPAdminShell={render,mount(next){context=next;window.UPStudentPreview?.mount(next);},reset(){window.UPStudentPreview?.reset();context=null;searchVersion++;clearTimeout(searchTimer);}};
+})();

@@ -30,7 +30,12 @@ function loadConfig(env=process.env){
   const db={appUrl:required('DATABASE_URL'),internalUrl:required('INTERNAL_DATABASE_URL')};
   for(const value of Object.values(db)){let parsed;try{parsed=new URL(value);}catch{configError('Confira os endereços privados do PostgreSQL.');}if(!['postgres:','postgresql:'].includes(parsed.protocol))configError('As conexões devem usar PostgreSQL.');}
   if(production&&env.MIGRATION_DATABASE_URL)configError('A credencial de migração não deve ser entregue ao processo da aplicação.');
-  const secret=required('KIWIFY_WEBHOOK_SECRET');if(secret.length<32)configError('KIWIFY_WEBHOOK_SECRET precisa de um token longo e aleatório.');
+  const secret=required('KIWIFY_WEBHOOK_SECRET');
+  let additionalSecrets=[];
+  if(env.KIWIFY_ADDITIONAL_SECRETS!==undefined){
+    try{additionalSecrets=JSON.parse(env.KIWIFY_ADDITIONAL_SECRETS);}catch{configError('KIWIFY_ADDITIONAL_SECRETS deve ser uma lista JSON de tokens.');}
+    if(!Array.isArray(additionalSecrets)||additionalSecrets.length>20||additionalSecrets.some(value=>typeof value!=='string'||!value.trim()))configError('KIWIFY_ADDITIONAL_SECRETS deve conter somente tokens preenchidos.');
+  }
   const encryptionKey=required('PAYLOAD_ENCRYPTION_KEY');if(Buffer.from(encryptionKey,'base64').length!==32)configError('PAYLOAD_ENCRYPTION_KEY deve conter 32 bytes em base64.');
   const mail=loadMailConfig(env);
   const trustProxy=env.TRUST_PROXY?env.TRUST_PROXY.split(',').map(x=>x.trim()):false;
@@ -38,9 +43,9 @@ function loadConfig(env=process.env){
   const ipLimit=Number(env.AUTH_REQUESTS_PER_IP_HOUR||20);if(!Number.isInteger(ipLimit)||ipLimit<1||ipLimit>10000)configError('Defina um limite válido de pedidos por IP.');
   if(env.KIWIFY_PREVIOUS_SECRET){
     const start=new Date(required('KIWIFY_ROTATED_AT')).getTime(),end=new Date(required('KIWIFY_PREVIOUS_VALID_UNTIL')).getTime();
-    if(env.KIWIFY_PREVIOUS_SECRET.length<32||!Number.isFinite(start)||!Number.isFinite(end)||end-start<86400000)configError('A troca de token deve preservar o anterior por pelo menos um dia.');
+    if(!Number.isFinite(start)||!Number.isFinite(end)||end-start<86400000)configError('A troca de token deve preservar o anterior por pelo menos um dia.');
   }
   return {production,port,host:env.HOST||'127.0.0.1',appOrigin:url.origin,authSecret,db,mail,trustProxy,ipLimit,preview:!production&&env.ALLOW_PREVIEW!=='false',
-    billing:{secret,encryptionKey,previousSecret:env.KIWIFY_PREVIOUS_SECRET,previousValidUntil:env.KIWIFY_PREVIOUS_VALID_UNTIL}};
+    billing:{secret,additionalSecrets,encryptionKey,previousSecret:env.KIWIFY_PREVIOUS_SECRET,previousValidUntil:env.KIWIFY_PREVIOUS_VALID_UNTIL}};
 }
 module.exports={loadConfig,loadMailConfig,configError};

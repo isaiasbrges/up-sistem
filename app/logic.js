@@ -8,12 +8,17 @@
  const norm=(v,rev)=>rev?finite(v):finite(v);
  function diagnostic(d){
   const roda=d.roda||{},radar=d.radar||{};
-  const rs=Object.values(roda).map(x=>finite(x&&x.score)),bs=Object.values(radar).map(x=>finite(x&&x.score));
-  if(rs.length!==8||bs.length!==4)throw Error('Notas incompletas');
+  // score:null significa "não se aplica" (N): a pergunta foi respondida, mas não entra nas médias.
+  const applies=(group,k)=>!(group[k]&&group[k].score===null);
+  const rk=Object.keys(roda),bk=Object.keys(radar);
+  if(rk.length!==8||bk.length!==4)throw Error('Notas incompletas');
+  const rA=rk.filter(k=>applies(roda,k)),bA=bk.filter(k=>applies(radar,k));
+  if(!rA.length||!bA.length)throw Error('Notas incompletas');
+  const rs=rA.map(k=>finite(roda[k]&&roda[k].score)),bs=bA.map(k=>finite(radar[k]&&radar[k].score));
   if([...rs,...bs].some(v=>v<0||v>10))throw Error('Notas fora do intervalo');
   const minR=Math.min(...rs),minB=Math.min(...bs);
-  const cuidados=Object.keys(roda).filter(k=>finite(roda[k].score)===minR);
-  const gargalos=Object.keys(radar).filter(k=>finite(radar[k].score)===minB);
+  const cuidados=rA.filter(k=>finite(roda[k].score)===minR);
+  const gargalos=bA.filter(k=>finite(radar[k].score)===minB);
   const gargalo=gargalos.includes(d.gargalo)?d.gargalo:gargalos[0];
   return {mediaRoda:average(rs),mediaRadar:average(bs),cuidados,gargalos,gargalo,roda,radar,dificuldade:d.dificuldade||'',perfil:d.perfil||{}};
  }

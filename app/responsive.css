@@ -1,0 +1,51 @@
+/* Reflow content instead of hiding overflow or shrinking the entire interface. */
+.main,.workspace,.app-body,.panel,.auth-right,.auth-card{min-width:0}
+.panel,.staff-panel,.auth-card{overflow-wrap:anywhere}
+.btn-row,.form-actions,.sticky-actions,.staff-page-actions{flex-wrap:wrap}
+.btn,.staff-premium .btn{max-width:100%;white-space:normal}
+.field input,.field select,.field textarea{max-width:100%;min-width:0}
+.table-scroll{container-type:inline-size}
+.table-scroll .table{min-width:0;width:100%}
+.table-scroll .table :is(th,td){white-space:normal;overflow-wrap:anywhere}
+.side,.staff-premium .side{overflow-y:auto;overflow-x:clip;overscroll-behavior:contain}
+.side>nav,.staff-premium .side>nav{flex-shrink:0}
+.staff-premium .staff-sidebar-art{left:0;bottom:0;width:100%;height:120px;overflow:clip}
+body:has(.student-preview-dialog[open]){overflow:hidden}
+.student-preview-toolbar>div,.student-preview-toolbar label{min-width:0}
+.student-preview-toolbar label select{min-width:0}
+#toast{max-width:calc(100vw - 32px);right:16px}
+
+@container (max-width:700px){
+ .table[data-responsive-table]{display:block}
+ .table[data-responsive-table] thead{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%)}
+ .table[data-responsive-table] tbody{display:grid;gap:12px}
+ .table[data-responsive-table] tbody tr{display:grid;border:1px solid var(--border-subtle);border-radius:12px;padding:8px}
+ .table[data-responsive-table] tbody td{display:grid;grid-template-columns:minmax(80px,35%) minmax(0,1fr);gap:12px;padding:10px 8px;text-align:left;min-width:0}
+ .table[data-responsive-table] tbody td::before{content:attr(data-cell-label);font-weight:600;color:var(--text-secondary)}
+ .table[data-responsive-table] tbody td[colspan]{display:block}
+ .table[data-responsive-table] tbody td[colspan]::before{content:none}
+ .table[data-responsive-table] tbody td:last-child{border-bottom:0}
+ .table[data-responsive-table] td>*{grid-column:2;min-width:0;max-width:100%}
+}
+@media(max-width:760px){
+ .profile-summary{flex-wrap:wrap;overflow:visible}
+ .profile-section{min-width:0;flex:1 1 120px;white-space:normal}
+ .toolbar .field{min-width:0;flex-basis:160px}
+ .auth-right{padding-inline:16px}.auth-card{padding-inline:20px}
+ .student-preview-toolbar>div{flex-basis:150px;min-width:0}
+ .staff-premium .shell{padding-bottom:0}
+ .staff-premium .side{max-width:calc(100vw - 40px)}
+ .financial-kpi strong{white-space:normal;overflow-wrap:anywhere}
+ .overview-heading .btn-row{flex-wrap:wrap}
+}
+@media(max-height:850px){
+ .staff-premium .side{padding-block:16px}
+ .staff-premium .sidebar-top{margin-bottom:12px;min-height:48px}
+ .staff-premium .side .nav-link{padding-block:8px;min-height:40px;margin-block:2px}
+ .staff-premium .nav-section{margin-top:12px;padding-top:12px}
+ .staff-premium .side [data-staff-student-preview]{margin-top:8px}
+ .staff-premium .workspace{padding-top:18px}
+ .staff-page-heading{min-height:90px;margin-bottom:18px}
+ .auth-right{padding-block:20px}.auth-card{padding-block:24px}
+}
+@media print{.table[data-responsive-table]{display:table}.side{display:none}}

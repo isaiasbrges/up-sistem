@@ -49,7 +49,7 @@
   if(event.target.closest('[data-action="close-sidebar"]')){closeMobile();return;}
   const notifications=event.target.closest('[data-action="toggle-notifications"]');
   if(notifications){const panel=document.querySelector('#notification-panel');const open=panel.hidden;closePopovers();panel.hidden=!open;notifications.setAttribute('aria-expanded',String(open));return;}
-  if(event.target.closest('[data-go]')){mobileOpen=false;closePopovers();sync();}
+  if(event.target.closest('[data-go],[data-staff-nav],[data-staff-search-student],[data-staff-search-event]')){mobileOpen=false;closePopovers();sync();}
   else if(!event.target.closest('.header-popover,.tool-search'))closePopovers();
  });
  document.addEventListener('input',event=>{

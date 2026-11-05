@@ -56,6 +56,16 @@ function createHttpApp({db,sendCode,authSecret,now=Date.now,secure=false,appOrig
     }
     next();
   });
+  function passwordSession(res,result){
+    res.cookie('up_session',result.token,{httpOnly:true,secure,sameSite:'strict',maxAge:SESSION_TTL,path:'/'});
+    res.json({ok:true});
+  }
+  api.post('/auth/password/login',async(req,res)=>passwordSession(res,await identity.loginPassword(req.body?.email,req.body?.password,req.ip)));
+  api.post('/auth/password/request-reset',async(req,res)=>res.json(await identity.requestCode(req.body?.email,req.ip,'password_reset')));
+  api.post('/auth/password/reset',async(req,res)=>{
+    if(typeof req.body?.password!=='string')fail(400,'INVALID_PASSWORD','Informe a nova senha.');
+    passwordSession(res,await identity.verifyCode(req.body?.email,req.body?.code,req.ip,req.body.password));
+  });
   api.post('/auth/request-code',async(req,res)=>res.json(await identity.requestCode(req.body?.email,req.ip)));
   api.post('/auth/verify-code',async(req,res)=>{
     const result=await identity.verifyCode(req.body?.email,req.body?.code,req.ip);
@@ -132,7 +142,17 @@ function createHttpApp({db,sendCode,authSecret,now=Date.now,secure=false,appOrig
   app.use('/api',(_req,_res)=>fail(404,'NOT_FOUND','Use os contratos da API atual.'));
   app.get('/app/config.js',(_req,res)=>res.type('js').send('window.UP_CONFIG='+JSON.stringify({api:true,apiVersion:1,previewEnabled:preview})+';'));
   if(!preview)app.use(['/app/preview.html','/app/preview-data.js'],(_req,res)=>res.sendStatus(404));
+  app.get('/app/student-preview.html',async(req,res)=>{
+    const account=await identity.authenticate(tokenFrom(req));
+    if(account.user.role!=='admin')fail(403,'STAFF_REQUIRED','Esta visualização é restrita à administração.');
+    res.set({'Cache-Control':'no-store','X-Frame-Options':'SAMEORIGIN','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'none'"});
+    res.sendFile(path.join(ROOT,'server/views/student-preview.html'));
+  });
   app.get('/',(_req,res)=>res.sendFile(path.join(ROOT,'index.html')));
+  app.get('/admin',(req,res)=>{
+    if(req.path.endsWith('/'))return res.redirect(308,'/admin');
+    res.set('Cache-Control','no-store').sendFile(path.join(ROOT,'index.html'));
+  });
   app.get('/entrar',(_req,res)=>res.sendFile(path.join(ROOT,'index.html')));
   for(const dir of ['app','design-system'])app.use('/'+dir,express.static(path.join(ROOT,dir),{dotfiles:'deny'}));
   app.use((err,req,res,_next)=>{

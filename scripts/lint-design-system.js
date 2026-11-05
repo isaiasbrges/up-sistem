@@ -21,6 +21,7 @@ for(const [name,theme]of [['light',base],['dark',{...base,...model.color.dark}]]
  for(const [fg,bg,minimum]of [['text-primary','surface',textMinimum],['text-secondary','surface',textMinimum],['text-muted','surface',textMinimum],['app-muted','surface',textMinimum],['primary-text','surface',textMinimum],['on-primary','primary',textMinimum],['on-primary','primary-hover',textMinimum],['on-primary','primary-active',textMinimum],['on-danger','danger',textMinimum],['on-danger','danger-hover',textMinimum],['on-accent','accent',textMinimum],['on-accent','accent-active',textMinimum],['text-on-hero-muted','surface-hero',textMinimum],['chart-primary','surface',graphicMinimum],['chart-highlight','surface',graphicMinimum],['border-control','surface',graphicMinimum],['focus-ring','surface',graphicMinimum]]){
   const ratio=contrast(resolved(fg,theme),resolved(bg,theme));assert.ok(ratio>=minimum,`${name}: ${fg}/${bg}: ${ratio.toFixed(2)} < ${minimum}`);pairs++;
  }
+ for(const [fg,bg]of [['staff-text','staff-card'],['staff-muted','staff-card'],['staff-orange-ink','staff-card'],['staff-blue-ink','staff-card'],['staff-success','staff-card'],['up-black','up-orange'],['up-black','up-offwhite'],['staff-warm-muted','up-offwhite'],['staff-warm-success','up-offwhite']]){const ratio=contrast(resolved(fg,theme),resolved(bg,theme));assert.ok(ratio>=textMinimum,`${name}: admin ${fg}/${bg}: ${ratio.toFixed(2)} < ${textMinimum}`);pairs++;}
 }
 let links=0;
 for(const file of files(path.join(root,'design-system')).filter(p=>/\.(html|css)$/.test(p))){
